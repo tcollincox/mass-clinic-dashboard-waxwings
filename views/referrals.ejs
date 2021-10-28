@@ -4,12 +4,35 @@
         <title>
             Referrals
         </title>
+        <style>
+            .header{
+                width:8%;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                margin: auto;
+                width:50%;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <h1>Referrals</h1>
         <p><a href="/"><button>Home</button></a></p>
-        <% referrals.forEach(function(o) { %>
-            <li ><span><%= o.place %> <%= o.year %></span></li>
-        <% }); %>
+        <h1 class="header">Referrals</h1>
+        <table class="data-table">
+            <tr>
+                <th>Year</th>
+                <th>Place of Referral</th>
+            </tr>
+            <% referrals.forEach(function(o) { %>
+                <tr><td><%= o.year %></td> <td><%= o.place %></td></tr>
+            <% }); %>
+        </table>
     </body>
 </html>
+

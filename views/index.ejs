@@ -40,19 +40,21 @@
             .dropdown:hover .dropdown-content {display: block;}
 
             .dropdown:hover .dropbtn {background-color: blue;}
+
+            .chart{
+                display: inline-block;
+                margin:50px 50px;
+                width:250px;
+                height: 300px;
+                font-size: large;
+                border: 2px solid black;
+                border-radius: 5px;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <h1>Home page</h1>
-        <a href="/referrals">Referrals</a>
-        <a href="/patients">Patients</a>
-        <a href="/options">Options</a>
-		<a href="/medVolunteers">Medical Volunteers</a>
-        <a href="/insurance">Insurance</a>
-        <a href="/followups">Followups</a>
-        <a href="/volunteers">Volunteers</a>
-
-
         <div class="dropdown">
             <button class="dropbtn">Options</button>
             <div class="dropdown-content">
@@ -62,8 +64,19 @@
                 <a href="/followups">Followups</a>
                 <a href="/options">Options</a>
                 <a href="/insurance">Insurance</a>
-                <a href="/volunteers">Volunteers</a>
+                <a href="/volunteers">Nonmedical Volunteers</a>
             </div>
         </div>
+        <hr>
+        <a class="chart" href="/referrals">Referrals</a>
+        <a class="chart" href="/patients">Patients</a>
+        <a class="chart" href="/options">Options</a>
+		<a class="chart" href="/medVolunteers">Medical Volunteers</a>
+        <a class="chart" href="/insurance">Insurance</a>
+        <a class="chart" href="/followups">Followups</a>
+        <a class="chart" href="/volunteers">Nonmedical Volunteers</a>
+
+
+        
     </body>
 </html>
