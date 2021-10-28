@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Insurance
+        </title>
+    </head>
+    <body>
+        <h1>Insurance</h1>
+        <p><a href="/"><button>Home</button></a></p>
+        <% insurance.forEach(function(o) { %>
+            <li ><span><span>People who applied</span> <%= o.appliedFor %> <span>Year</span> <%= o.year %></span></li>
+        <% }); %>
+    </body>
+</html>

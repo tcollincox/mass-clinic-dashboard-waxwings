@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Followups 
+        </title>
+    </head>
+    <body>
+        <h1>Followups</h1>
+        <p><a href="/"><button>Home</button></a></p>
+        <% followups.forEach(function(o) { %>
+            <li><span>Name:  <%= o.name %>,  Number of Followups:  <%= o.numOfFollowups %></span></li>
+        <% }); %>
+    </body>
+</html>
