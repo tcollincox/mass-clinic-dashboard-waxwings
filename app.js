@@ -11,6 +11,7 @@ const optionsRouter = require("./routes/option.js");
 const insuranceRouter = require("./routes/insurance.js");
 const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
+const volunteers = require("./Routes/volunteer.js")
 
 
 var app = express();
@@ -32,6 +33,7 @@ app.use("/options", optionsRouter);
 app.use("/medVolunteers",medVolunteersRouter);
 app.use("/insurance", insuranceRouter);
 app.use("/followups", followups);
+app.use("/volunteers",volunteers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
