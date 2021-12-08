@@ -5,34 +5,98 @@
             Referrals
         </title>
         <style>
-            .header{
-                width:8%;
-                margin: auto;
-                margin-bottom: 20px;
+            *{
+                margin: 0px;
+                padding: 0px;
+                padding-top: 20px ;
+            }
+            
+            h1{
+                text-align: center;
+                margin: 0px auto;
+                width: 50%;
             }
             table{
                 border-collapse: collapse;
             }
             table, td, th{
                 border: 1px solid black ;
-                margin: auto;
-                width:50%;
                 text-align: center;
+                padding:5px;
+            }
+            #canvas_container{
+                margin:0px auto ;
+                height: 200px;
+                width: 25%;
+            }
+            .data_table{
+                visibility: collapse;
             }
         </style>
     </head>
     <body>
-        <p><a href="/"><button>Home</button></a></p>
-        <h1 class="header">Referrals</h1>
-        <table class="data-table">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a> 
+        <h1 class="header">Referrals To and From Mass Clinic</h1>
+        <table class="data_table" id="referral_table" >
             <tr>
+                <th>To or From</th>
+                <th>Amount of People referred</th>
                 <th>Year</th>
-                <th>Place of Referral</th>
             </tr>
             <% referrals.forEach(function(o) { %>
-                <tr><td><%= o.year %></td> <td><%= o.place %></td></tr>
+                <tr><td><%= o.ToFrom %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        
+        <script>
+            let referralsToFromArray =[];
+            let referralsPatientAmountArray =[];
+            let referralsRecoredYear = [];
+            function arrayTable(table_id){
+                let table = document.getElementById(table_id).rows;
+                for(let i = 1; i<table.length; i++ ){
+                        referralsToFromArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        referralsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        referralsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                }
+                
+            }
+
+            arrayTable("referral_table");
+
+            const labels = [
+                "To 2019", 
+                "To 2020", 
+                "To 2021",
+                "From 2019",
+                "From 2020",
+                "From 2021"
+                ];
+                const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Referrals',
+                    backgroundColor: 'rgb(100, 200, 132)',
+                    
+                    data: referralsPatientAmountArray,
+                }]
+                };
+            
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {}
+                };
+
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        </script>
     </body>
 </html>
 
