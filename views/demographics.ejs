@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Patient Demographics
+        </title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            .chartBox{
+                width:300px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Demographics</h1>
+        <p><a href="/"><button>Home</button></a></p>
+        <% demographics.forEach(function(o) { %>
+            <li ><span><%= o.choice %> </span></li>
+        <% }); %>
+
+        <!--first donut graph for gender-->
+        <div class="chartBox">
+            <canvas id="genderDonutGraph"></canvas>
+        </div>
+
+        <!--second donut graph for age-->
+        <div class="chartBox">
+            <canvas id="ageDonutGraph"></canvas>
+        </div>
+
+        <!--third donut graph for race-->
+        <div class="chartBox">
+            <canvas id="raceDonutGraph"></canvas>
+        </div>
+        
+        <script>
+            //First Donut Graph data, config and render
+            //data for gender
+            const dataGender = {
+                    labels: ['Male', 'Female'],
+                    datasets: [
+                        {
+                            label: 'Number of',
+                            data: [714, 1128],
+                            backgroundColor: [
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 99, 132)',
+                            ],
+                            borderColor: [
+                                'rgba(0, 0, 0, 1)',
+                                'rgba(0, 0, 0, 1)',
+                            ],
+                            borderWidth: 2,
+                        }]
+            };
+
+            //config for first donut graph
+            const configGender = {
+                    type: 'doughnut',
+                    data: dataGender,
+                    options: {
+                        cutoutPercentage: 80,
+                        animation: {
+                            animateScale: true,
+                        }
+                    }   
+            };
+
+            //render init block for first donut graph
+            const genderDonutGraph = new Chart(
+                document.getElementById('genderDonutGraph'),
+                configGender
+            );
+        
+
+            //Second Donut Graph data, config and render
+            //data for age
+            const dataAge = {
+                labels: ['19+', '18 and under'],
+                datasets: [
+                    {
+                        label: 'Age of Patient',
+                        data: [1834, 0],
+                        backgroundColor: [
+                            'rgb(0, 128, 0)',
+                            'rgb(255, 0, 0)',
+                        ],
+                        borderColor: [
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                        ],
+                        borderWidth: 2,
+                    }]
+            };
+
+            //config for second donut graph
+            const configAge = {
+                type: 'doughnut',
+                data: dataAge,
+                options: {
+                    cutoutPercentage: 80,
+                    animation: {
+                        animateScale: true,
+                    }
+                }   
+            };
+
+            //render second graph
+            const ageDonutGraph = new Chart(
+                document.getElementById('ageDonutGraph'),
+                configAge
+            );
+
+            //Third Donut Graph data, config and render
+            //data for age
+            const dataRace = {
+                labels: ['African-American', "Hispanic/Latino", "Multi-Racial", "White", "Other", "Undeclared"],
+                datasets: [
+                    {
+                        label: 'Race of Patient',
+                        data: [565, 399, 142, 732, 4, 0],
+                        backgroundColor: [
+                            'rgb(255, 0, 0)',
+                            'rgb(255, 128, 0)',
+                            'rgb(255, 255, 0)',
+                            'rgb(0, 255, 0)',
+                            'rgb(0, 255, 255)',
+                            'rgb(127, 0, 255)',
+                        ],
+                        borderColor: [
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                            'rgba(0, 0, 0, 1)',
+                        ],
+                        borderWidth: 2,
+                    }]
+            };
+
+            //config for third donut graph
+            const configRace = {
+                type: 'doughnut',
+                data: dataRace,
+                options: {
+                    cutoutPercentage: 80,
+                    animation: {
+                        animateScale: true,
+                    }
+                }   
+            };
+
+            //render third graph
+            const raceDonutGraph = new Chart(
+                document.getElementById('raceDonutGraph'),
+                configRace
+            );
+
+        </script>
+
+    </body>
+</html>
+

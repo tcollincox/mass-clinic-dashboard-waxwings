@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 const referralsRouter = require("./routes/referral.js");
 const patientsRouter = require("./routes/patient.js")
-const optionsRouter = require("./routes/option.js");
+const demographicsRouter = require("./routes/demographics.js");
 const insuranceRouter = require("./routes/insurance.js");
 const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use("/referrals", referralsRouter);
 app.use("/patients", patientsRouter);
-app.use("/options", optionsRouter);
+app.use("/demographics", demographicsRouter);
 app.use("/medVolunteers",medVolunteersRouter);
 app.use("/insurance", insuranceRouter);
 app.use("/followups", followups);
