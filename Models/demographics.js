@@ -5,5 +5,9 @@ const demographics = [
 ]
 
 
+<<<<<<< HEAD
 exports.getDemographics = () => {return demographics} ;
 
+=======
+exports.getDemographics = () => {return demographics} ;
+>>>>>>> main
