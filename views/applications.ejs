@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            FollowUps
+            Applications
         </title>
         <style>
             *{
@@ -37,15 +37,15 @@
     <body>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <a href="/">Home</a> 
-        <h1 class="header">Patient Follow Up Appointments</h1>
-        <table class="data_table" id="followups_table" >
+        <h1 class="header">Applications to Various Programs</h1>
+        <table class="data_table" id="application_table" >
             <tr>
-                <th>Type of Patient</th>
-                <th>Amount of People referred</th>
+                <th>Type of Application</th>
+                <th>Amount of People Who Applied</th>
                 <th>Year</th>
             </tr>
-            <% followups.forEach(function(o) { %>
-                <tr><td><%= o.PatientType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% applications.forEach(function(o) { %>
+                <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
         <div id="canvas_container">
@@ -53,39 +53,36 @@
         </div>
         
         <script>
-            let followUpsPatientTypeArray =[];
-            let followUpsPatientAmountArray =[];
-            let followUpsRecoredYear = [];
+            let applicationApplicationTypeArray =[];
+            let applicationPatientAmountArray =[];
+            let applicationRecoredYear = [];
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
                 for(let i = 1; i<table.length; i++ ){
-                        followUpsPatientTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        followUpsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        followUpsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                        applicationApplicationTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        applicationPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        applicationRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
                 }
                 
             }
 
-            arrayTable("followups_table");
+            arrayTable("application_table");
 
             const labels = [
-                "Diebetic 2019", 
-                "Diebetic 2020", 
-                "Diebetic 2021",
-                "Hypertensive 2019",
-                "Hypertensive 2020",
-                "Hypertensive 2021",
-                "Dual 2019",
-                "Dual 2020",
-                "Dual 2021"
+                "Insurance 2019", 
+                "Insurance 2020", 
+                "Insurance 2021",
+                "Prescription 2019",
+                "Prescription 2020",
+                "Prescription 2021"
                 ];
                 const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'FollowUps',
+                    label: 'Applications',
                     backgroundColor: 'rgb(100, 200, 132)',
                     
-                    data: followUpsPatientAmountArray,
+                    data: applicationPatientAmountArray,
                 }]
                 };
             
@@ -102,3 +99,5 @@
         </script>
     </body>
 </html>
+
+ 

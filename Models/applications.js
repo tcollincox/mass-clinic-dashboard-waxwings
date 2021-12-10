@@ -1,8 +1,8 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const followUps = db.define('PatientFollowUp', {
-    PatientType: {
+const applications = db.define('PatientApplicationComplete', {
+    ApplicationType: {
         type: sequelize.STRING
     },
     PatientAmount: {
@@ -15,4 +15,4 @@ const followUps = db.define('PatientFollowUp', {
     freezeTableName: true
 });
 
-module.exports = followUps;
+module.exports = applications;

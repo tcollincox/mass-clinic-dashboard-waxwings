@@ -1,7 +1,13 @@
-const express =  require("express");
+const express = require('express');
 const router = express.Router();
-const volCTRL = require("../Controllers/volunteerController.js");
+const db = require('../config/database');
+const Volunteers = require('../Models/volunteer');
 
-router.get("/", volCTRL.volunteersPage);
+router.get("/", (req, res) => Volunteers.findAll({attributes: ['VolunteerType', 'VolunteerAmount', 'RecordedYear']})
+.then(vols => {
+    res.render('volunteers.ejs', {volunteers:vols});
+})
+.catch(err => console.log("from routes: " + err)));
+
 
 module.exports =  router;
