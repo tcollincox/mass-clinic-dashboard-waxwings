@@ -11,7 +11,6 @@ const referralsRouter = require("./routes/referral.js");
 const patientsRouter = require("./routes/patient.js")
 const demographicsRouter = require("./routes/demographics.js");
 const insuranceRouter = require("./routes/insurance.js");
-const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
 const volunteers = require("./Routes/volunteer.js")
 
@@ -32,7 +31,6 @@ app.use('/', indexRouter);
 app.use("/referrals", referralsRouter);
 app.use("/patients", patientsRouter);
 app.use("/demographics", demographicsRouter);
-app.use("/medVolunteers",medVolunteersRouter);
 app.use("/insurance", insuranceRouter);
 app.use("/followups", followups);
 app.use("/volunteers",volunteers);
