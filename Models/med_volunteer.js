@@ -15,9 +15,9 @@
 // }
 
 const med_volunteers = [
-    {name: "Dennis" , type: "Medical", year: 2020}, 
-    {name: "Ty", type: "Non-medical" , year: 2019}, 
-    {name: "Jacob" , type: "Medical", year: 2021} ]  ;
+    {VolunteerType: "", VolunteerAmount:64, RecordedYear: 2019}, 
+    {VolunteerType: "", VolunteerAmount:45, RecordedYear: 2020}, 
+	{VolunteerType: "", VolunteerAmount:20, RecordedYear: 2021} ]  ;
 
 
 exports.getMedVolunteers = () => {return med_volunteers} ; 
