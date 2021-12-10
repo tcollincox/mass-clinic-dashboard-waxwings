@@ -3,8 +3,8 @@ const patientModel = require("../Models/patient");
 
 exports.patientsPage = (req,res) => {
 
-    const patients = patientModel.getPatients();
+    const patient = patientModel.getPatients();
 
-    res.render('patients.ejs', {patients: patients});
+    res.render('patients.ejs', {patient: patient});
 }
 

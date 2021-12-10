@@ -6,4 +6,4 @@ const followups = [
 ]
 
 
-exports.getFollowups = () => {return followups} ; 
+exports.getFollowups = () => {return followups}; 

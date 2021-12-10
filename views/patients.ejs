@@ -2,12 +2,14 @@
 <html>
     <head>
         <title>
-            Patients 
+            Patient Screenings 
         </title>
     </head>
     <body>
-        <h1>Patients Dashboard</h1>
+        <h1>Screenings</h1>
         <p><a href="/"><button>Home</button></a></p> 
-            <li><span>Id:  <%= patients.userId %>,  Patient Type:  <%= patients.type%></span></li>
+        <% patient.forEach(function(p) { %>
+            <li><span>Id:  <%= p.userId %>, Number of Screenings:  <%= p.screenings %>, Year:  <%= p.year %></span></li>
+        <% }); %>
     </body>
 </html>
