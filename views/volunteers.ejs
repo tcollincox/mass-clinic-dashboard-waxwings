@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Volunteers
+            Medical Volunteers
         </title>
 		<style>
             *{
@@ -36,10 +36,11 @@
     </head>
     <body>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a>
         <h1>Volunteers</h1>
-        <p><a href="/"><button>Home</button></a></p>
+        
 		
-		<table class="data_table" id="regVol_table" >
+		<table class="data_table" id="medVol_table" >
             <tr>
 				<th>Type</th>
                 <th>Amount of Volunteers</th>
@@ -53,34 +54,32 @@
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
 		
-        <script>
-			let volTypeArray = [];
-            let volAmountArray =[];
-            let volRecoredYear = [];
+		<script>
+			let medVolTypeArray = [];
+            let medVolAmountArray =[];
+            let medVolRecoredYear = [];
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
                 for(let i = 1; i<table.length; i++ ){
-                        volTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        volAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        volRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                        medVolTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        medVolAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        medVolRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
                 }
                 
             }
-
-            arrayTable("regVol_table");
-
+            arrayTable("medVol_table");
             const labels = [
-                "To 2019", 
-                "To 2020", 
-                "To 2021",
-                "From 2019",
-                "From 2020",
-                "From 2021"
+                "Medical 2019", 
+                "Medical 2020", 
+                "Medical 2021",
+                "Non-Medical 2019",
+                "Non-Medical 2020",
+                "Non-Medical 2021"
                 ];
                 const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'Non-Medical Volunteers',
+                    label: 'Medical Volunteers',
                     backgroundColor: 'rgb(100, 200, 132)',
                     
                     data: medVolAmountArray,
@@ -92,12 +91,10 @@
                     data,
                     options: {}
                 };
-
                 var myChart = new Chart(
                     document.getElementById('myChart'),
                     config
                 );
         </script>
-		
     </body>
 </html>
