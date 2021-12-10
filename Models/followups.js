@@ -15,4 +15,4 @@ const followUps = db.define('PatientFollowUp', {
     freezeTableName: true
 });
 
-exports.getFollowups = () => {return followups}; 
+module.exports = followUps;
