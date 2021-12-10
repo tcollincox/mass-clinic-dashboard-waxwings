@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const MassClinicDb = require('./config/database');
+
 
 var indexRouter = require('./routes/index');
 const referralsRouter = require("./routes/referral.js");
@@ -52,3 +54,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+try {
+  MassClinicDb.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
