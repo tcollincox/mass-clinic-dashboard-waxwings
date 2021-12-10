@@ -13,24 +13,6 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-<<<<<<< HEAD
-    "tedious": "^14.0.0"
-  },
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tcollincox/mass-clinic-dashboard-waxwings.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tcollincox/mass-clinic-dashboard-waxwings/issues"
-  },
-  "homepage": "https://github.com/tcollincox/mass-clinic-dashboard-waxwings#readme",
-  "description": ""
-=======
     "nodemon": "^2.0.13"
   }
->>>>>>> main
 }
