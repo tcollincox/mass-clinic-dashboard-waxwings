@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <title>
@@ -12,4 +12,47 @@
             <li><span>Id:  <%= p.userId %>, Number of Screenings:  <%= p.screenings %>, Year:  <%= p.year %></span></li>
         <% }); %>
     </body>
-</html>
+</html> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Patient Screenings
+        </title>
+        <h1><a href="/">Home</a></h1>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const labels = [
+      '2011',
+      '2012',
+      '2013',
+      '2014',
+      '2015',
+      '2016',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Patient Screenings',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 12, 3, 6],
+      }]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+  </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
