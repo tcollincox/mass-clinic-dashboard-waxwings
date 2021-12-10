@@ -1,4 +1,4 @@
-const patientModel = require("../Models/patient.js");
+const patientModel = require("../Models/patient");
 
 
 exports.patientsPage = (req,res) => {
