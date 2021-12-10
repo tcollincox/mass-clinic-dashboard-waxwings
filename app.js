@@ -3,14 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const MassClinicDb = require('./config/database');
+
 
 var indexRouter = require('./routes/index');
 const referralsRouter = require("./routes/referral.js");
 const patientsRouter = require("./routes/patient.js")
-const optionsRouter = require("./routes/option.js");
+const demographicsRouter = require("./routes/demographics.js");
 const insuranceRouter = require("./routes/insurance.js");
-const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
+const volunteers = require("./Routes/volunteer.js")
 
 
 var app = express();
@@ -28,10 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use("/referrals", referralsRouter);
 app.use("/patients", patientsRouter);
-app.use("/options", optionsRouter);
-app.use("/medVolunteers",medVolunteersRouter);
+app.use("/demographics", demographicsRouter);
 app.use("/insurance", insuranceRouter);
 app.use("/followups", followups);
+app.use("/volunteers",volunteers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,3 +52,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+try {
+  MassClinicDb.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}

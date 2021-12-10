@@ -4,12 +4,35 @@
         <title>
             Insurance
         </title>
+        <style>
+            .header{
+                width:40%;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                margin: auto;
+                width:50%;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <h1>Insurance</h1>
-        <p><a href="/"><button>Home</button></a></p>
-        <% insurance.forEach(function(o) { %>
-            <li ><span><span>People who applied</span> <%= o.appliedFor %> <span>Year</span> <%= o.year %></span></li>
-        <% }); %>
+        <a href="/"><button>Home</button></a>
+        <h1 class="header">People Who Applied for Insurance Post Visit</h1>
+        <table class="data-table">
+            <tr>
+                <th>Year</th>
+                <th>People who applied</th>
+            </tr>
+            <% insurance.forEach(function(o) { %>
+                <tr><td><%= o.year %></td> <td><%= o.appliedFor %></td></tr>
+            <% }); %>
+        </table>
+        
     </body>
 </html>

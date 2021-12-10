@@ -1,8 +1,18 @@
-const referrals = [
-    {place : "Mass Clinic" , year : 2019 },
-    {place : "Mass Clinic" , year : 2020},
-    {place : "Community Partner" , year : 2019},
-]
+const sequelize = require('sequelize');
+const db = require('../config/database');
 
+const referrals = db.define('PatientReferralsMassClinic', {
+    ToFrom: {
+        type: sequelize.STRING
+    },
+    PatientAmount: {
+        type: sequelize.INTEGER
+    },
+    RecordedYear: {
+        type: sequelize.INTEGER
+    }
+}, {
+    freezeTableName: true
+});
 
-exports.getReferrals = () => {return referrals} ; 
+module.exports = referrals;
