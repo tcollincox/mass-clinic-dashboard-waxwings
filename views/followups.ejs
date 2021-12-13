@@ -2,14 +2,103 @@
 <html>
     <head>
         <title>
-            Followups 
+            FollowUps
         </title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                padding-top: 20px ;
+            }
+            
+            h1{
+                text-align: center;
+                margin: 0px auto;
+                width: 50%;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                text-align: center;
+                padding:5px;
+            }
+            #canvas_container{
+                margin:0px auto ;
+                height: 200px;
+                width: 25%;
+            }
+            .data_table{
+                visibility: collapse;
+            }
+        </style>
     </head>
     <body>
-        <h1>Followups</h1>
-        <p><a href="/"><button>Home</button></a></p>
-        <% followups.forEach(function(o) { %>
-            <li><span>Name:  <%= o.name %>,  Number of Followups:  <%= o.numOfFollowups %></span></li>
-        <% }); %>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a> 
+        <h1 class="header">Patient Follow Up Appointments</h1>
+        <table class="data_table" id="followups_table" >
+            <tr>
+                <th>Type of Patient</th>
+                <th>Amount of People referred</th>
+                <th>Year</th>
+            </tr>
+            <% followups.forEach(function(o) { %>
+                <tr><td><%= o.PatientType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        
+        <script>
+            let followUpsPatientTypeArray =[];
+            let followUpsPatientAmountArray =[];
+            let followUpsRecoredYear = [];
+            function arrayTable(table_id){
+                let table = document.getElementById(table_id).rows;
+                for(let i = 1; i<table.length; i++ ){
+                        followUpsPatientTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        followUpsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        followUpsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                }
+                
+            }
+
+            arrayTable("followups_table");
+
+            const labels = [
+                "Diebetic 2019", 
+                "Diebetic 2020", 
+                "Diebetic 2021",
+                "Hypertensive 2019",
+                "Hypertensive 2020",
+                "Hypertensive 2021",
+                "Dual 2019",
+                "Dual 2020",
+                "Dual 2021"
+                ];
+                const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'FollowUps',
+                    backgroundColor: 'rgb(100, 200, 132)',
+                    
+                    data: followUpsPatientAmountArray,
+                }]
+                };
+            
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {}
+                };
+
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        </script>
     </body>
 </html>

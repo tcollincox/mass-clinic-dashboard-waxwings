@@ -1,7 +1,18 @@
-const volunteers = [
-    {name: "Dennis" , year: 2020}, 
-    {name: "Ty", year: 2019}, 
-    {name: "Jacob" , year: 2021} ]  ;
+const sequelize = require('sequelize');
+const db = require('../config/database');
 
+const volunteers = db.define('Volunteers', {
+    VolunteerType: {
+        type: sequelize.STRING
+    },
+    VolunteerAmount: {
+        type: sequelize.INTEGER
+    },
+    RecordedYear: {
+        type: sequelize.INTEGER
+    }
+}, {
+    freezeTableName: true
+});
 
-exports.getVolunteers = () => {return volunteers} ; 
+module.exports = volunteers;

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Applications
+        </title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                padding-top: 20px ;
+            }
+            
+            h1{
+                text-align: center;
+                margin: 0px auto;
+                width: 50%;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                text-align: center;
+                padding:5px;
+            }
+            #canvas_container{
+                margin:0px auto ;
+                height: 200px;
+                width: 25%;
+            }
+            .data_table{
+                visibility: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a> 
+        <h1 class="header">Applications to Various Programs</h1>
+        <table class="data_table" id="application_table" >
+            <tr>
+                <th>Type of Application</th>
+                <th>Amount of People Who Applied</th>
+                <th>Year</th>
+            </tr>
+            <% applications.forEach(function(o) { %>
+                <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        
+        <script>
+            let applicationApplicationTypeArray =[];
+            let applicationPatientAmountArray =[];
+            let applicationRecoredYear = [];
+            function arrayTable(table_id){
+                let table = document.getElementById(table_id).rows;
+                for(let i = 1; i<table.length; i++ ){
+                        applicationApplicationTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        applicationPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        applicationRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                }
+                
+            }
+
+            arrayTable("application_table");
+
+            const labels = [
+                "Insurance 2019", 
+                "Insurance 2020", 
+                "Insurance 2021",
+                "Prescription 2019",
+                "Prescription 2020",
+                "Prescription 2021"
+                ];
+                const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Applications',
+                    backgroundColor: 'rgb(100, 200, 132)',
+                    
+                    data: applicationPatientAmountArray,
+                }]
+                };
+            
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {}
+                };
+
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        </script>
+    </body>
+</html>
+
+ 

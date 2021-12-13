@@ -9,7 +9,10 @@
             .chartBox{
                 width:300px;
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
             *{
                 margin: 0px;
                 padding: 0px;
@@ -21,26 +24,41 @@
                 margin: 0px auto;
                 width: 50%;
             }
+<<<<<<< HEAD
 
             table{
                 border-collapse: collapse;
             }
 
+=======
+            table{
+                border-collapse: collapse;
+            }
+>>>>>>> main
             table, td, th{
                 border: 1px solid black ;
                 text-align: center;
                 padding:5px;
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
             #genderDonutGraph, #ageDonutGraph, #raceDonutGraph {
             width: 320px;
             height: 350px;
             }
+<<<<<<< HEAD
 
             .chartBox{
                 float: left;
             }
 
+=======
+            .chartBox{
+                float: left;
+            }
+>>>>>>> main
             .data_table{
                 visibility: collapse;
             }
@@ -64,10 +82,17 @@
                     <td><%= o.RecordedYear %></td>
                 </tr>
             <% }); %>
+<<<<<<< HEAD
 
         </table>
 
 
+=======
+
+        </table>
+
+
+>>>>>>> main
         <div id="aligned">
             <!--first donut graph for gender-->
             <div class="chartBox">
@@ -93,15 +118,22 @@
             
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
                 for(let i = 1; i < table.length; i++ ){
                     demographicTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
                     demogrpahicPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
                     demographicRecordedYear.push(table[i].cells[2].childNodes[0].nodeValue);
                 }//end for
+<<<<<<< HEAD
 
             }//end function
 
+=======
+            }//end function
+>>>>>>> main
             arrayTable("demographics_table");
             
             //First Donut Graph data, config and render
@@ -228,4 +260,8 @@
         </script>
 
     </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> main
