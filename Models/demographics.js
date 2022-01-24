@@ -4,5 +4,6 @@ const demographics = [
     {choice : "Race"},
 ]
 
+//random comment
 
 exports.getDemographics = () => {return demographics} ;
