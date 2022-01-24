@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/5018bdc6-4bac-4e12-ab1e-1bb4bf5fe143/resourceGroups/waxwings-mass-clinic-dashboard-rg/providers/Microsoft.Web/sites/mass-clinic-dashboard",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/5018bdc6-4bac-4e12-ab1e-1bb4bf5fe143/resourceGroups/waxwings-mass-clinic-dashboard-rg/providers/Microsoft.Web/sites/mass-clinic-dashboard-app"
 }

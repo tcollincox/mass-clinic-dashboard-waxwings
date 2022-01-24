@@ -1,9 +1,18 @@
-const followups = [
-    {name : "Human 1" , numOfFollowups : 0 },
-    {name : "Human 2" , numOfFollowups : 3 },
-    {name : "Human 3" , numOfFollowups : 6 },
-    {name : "Human 4" , numOfFollowups : 1 }
-]
+const sequelize = require('sequelize');
+const db = require('../config/database');
 
+const followUps = db.define('PatientFollowUp', {
+    PatientType: {
+        type: sequelize.STRING
+    },
+    PatientAmount: {
+        type: sequelize.INTEGER
+    },
+    RecordedYear: {
+        type: sequelize.INTEGER
+    }
+}, {
+    freezeTableName: true
+});
 
-exports.getFollowups = () => {return followups} ; 
+module.exports = followUps;
