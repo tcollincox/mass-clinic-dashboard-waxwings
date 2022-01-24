@@ -30,7 +30,8 @@
 //     {DemographicType: 'Undeclared', PatientAmount: 0, RecordedYear: 2020},
 //     {DemographicType: 'Undeclared', PatientAmount: 0, RecordedYear: 2021}
 
-// ]
+
+//random comment
 
 
 // exports.getDemographics = () => {return demographics} ;
