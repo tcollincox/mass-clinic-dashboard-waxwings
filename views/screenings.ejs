@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Referrals
+        </title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                padding-top: 20px ;
+            }
+            
+            h1{
+                text-align: center;
+                margin: 0px auto;
+                width: 50%;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                text-align: center;
+                padding:5px;
+            }
+            #canvas_container{
+                margin:0px auto ;
+                height: 200px;
+                width: 25%;
+            }
+            .data_table{
+                visibility: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a> 
+        <h1 class="header">Patient Screenings By Year</h1>
+        <table class="data_table" id="screening_table" >
+            <tr>
+                <th>To or From</th>
+                <th>Amount of People Screened</th>
+                <th>Year</th>
+            </tr>
+            <% screenings.forEach(function(o) { %>
+                <tr><td><%= o.ToFrom %></td> <td><%= o.ScreenAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        
+        <script>
+            let screeningsToFromArray =[];
+            let screeningsPatientAmount =[];
+            let screeningsRecoredYear = [];
+            function arrayTable(table_id){
+                let table = document.getElementById(table_id).rows;
+                for(let i = 1; i<table.length; i++ ){
+                        screeningsToFromArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        screeningsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        screeningsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                }
+                
+            }
+
+            arrayTable("screening_table");
+
+            const labels = [
+                "To 2019", 
+                "To 2020", 
+                "To 2021",
+                "From 2019",
+                "From 2020",
+                "From 2021"
+                ];
+                const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Screenings',
+                    backgroundColor: 'rgb(100, 200, 132)',
+                    
+                    data: screeningsPatientAmountArray,
+                }]
+                };
+            
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {}
+                };
+
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        </script>
+    </body>
+</html>
+
