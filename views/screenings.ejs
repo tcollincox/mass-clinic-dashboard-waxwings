@@ -40,9 +40,8 @@
         <h1 class="header">Patient Screenings By Year</h1>
         <table class="data_table" id="screening_table" >
             <tr>
-                <th>To or From</th>
-                <th>Amount of People Screened</th>
-                <th>Year</th>
+                <th>Patient Amount</th>
+                <th>Recorded Year</th>
             </tr>
             <% screenings.forEach(function(o) { %>
                 <tr><td><%= o.ToFrom %></td> <td><%= o.ScreenAmount %></td><td><%= o.RecordedYear %></td></tr>
@@ -53,7 +52,6 @@
         </div>
         
         <script>
-            let screeningsToFromArray =[];
             let screeningsPatientAmount =[];
             let screeningsRecoredYear = [];
             function arrayTable(table_id){
@@ -69,12 +67,9 @@
             arrayTable("screening_table");
 
             const labels = [
-                "To 2019", 
-                "To 2020", 
-                "To 2021",
-                "From 2019",
-                "From 2020",
-                "From 2021"
+                "2019",
+                "2020",
+                "2021"
                 ];
                 const data = {
                 labels: labels,
