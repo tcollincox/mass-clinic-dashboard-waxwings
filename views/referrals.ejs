@@ -4,6 +4,7 @@
         <title>
             Referrals
         </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
         <style>
             *{
                 margin: 0px;
@@ -28,9 +29,18 @@
                 margin:0px auto ;
                 height: 200px;
                 width: 25%;
+                display: block;
             }
             .data_table{
                 visibility: collapse;
+            }
+            .new-line{
+                display: block;
+                margin: 200px 40%;
+            }
+            select{
+                width:120px;
+                height: 40px;
             }
         </style>
     </head>
@@ -51,38 +61,72 @@
         <div id="canvas_container">
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
+        <div class="new-line">
+            <label>Select Recored Year</label>
+            <select id="time-frame" name="time-frame">
+                <option>All Years</option>
+            </select>
+        </div>
         
         <script>
-            let referralsToFromArray =[];
-            let referralsPatientAmountArray =[];
-            let referralsRecoredYear = [];
+            let referralsDataArray =[];
+            let referralsLabelArray = [];
+            let usedArray = [];
+            let specifcLabelsArray = [];
+            let referralsYearArray = [];
+
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
                 for(let i = 1; i<table.length; i++ ){
-                        referralsToFromArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        referralsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        referralsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                        referralsLabelArray.push(table[i].cells[0].childNodes[0].nodeValue + " " + table[i].cells[2].childNodes[0].nodeValue);
+                        referralsDataArray.push({ToFrom:table[i].cells[0].childNodes[0].nodeValue,PatientAmount:table[i].cells[1].childNodes[0].nodeValue,RecordedYear:table[i].cells[2].childNodes[0].nodeValue});
+                        referralsYearArray.push(table[i].cells[2].childNodes[0].nodeValue);
                 }
                 
             }
 
-            arrayTable("referral_table");
+            function desiredArray(year, fullArray){
+                let tempArray = [];
+                if(year == "All Years"){   
+                    for(let i = 0; i<fullArray.length; i++){
+                        tempArray.push(fullArray[i].PatientAmount);
+                    }
+                    return tempArray;
+                }
+                else{
+                    for(let i = 0; i<fullArray.length ; i++){
+                        if(fullArray[i].RecordedYear == year){
+                            tempArray.push(fullArray[i].PatientAmount);
+                        }
+                    }
+                    return tempArray;
+                }
+            }
 
-            const labels = [
-                "To 2019", 
-                "To 2020", 
-                "To 2021",
-                "From 2019",
-                "From 2020",
-                "From 2021"
-                ];
+            function desiredLabels(year, fullArray){
+                let tempArray = [];
+                if(year == "All Years"){    
+                    return fullArray;
+                }
+                else{
+                    tempArray.push("To " + year, "From " + year);
+                }
+                return tempArray;
+            }
+
+            arrayTable("referral_table");
+            usedArray = desiredArray("All Years", referralsDataArray);
+            specifcLabelsArray = desiredLabels("All Years", referralsLabelArray);
+
+
+            function generateChart(labelArray, dataArray){
+                const labels = labelArray;
                 const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'Referrals',
-                    backgroundColor: 'rgb(100, 200, 132)',
-                    
-                    data: referralsPatientAmountArray,
+                    label: 'Referrals To Mass Clinic',
+                    backgroundColor: ['rgb(100, 200, 132)','rgb(20, 20, 132)'],
+                    data: dataArray
                 }]
                 };
             
@@ -96,6 +140,36 @@
                     document.getElementById('myChart'),
                     config
                 );
+
+                return myChart;
+            }
+
+            
+            
+            function addSelectYears(DataArray){
+                let select = document.getElementById('time-frame');
+                let years = [];
+                years = [... new Set(DataArray)]
+                for(let i = 0; i <years.length; i++){
+                    let option = document.createElement("option");
+                    option.text = years[i];
+                    select.add(option);
+                }
+                
+            }
+
+            
+
+            let globalChart = generateChart(specifcLabelsArray,usedArray);
+            addSelectYears(referralsYearArray);
+
+            document.getElementById('time-frame').addEventListener('change', function() {
+                let dataArray = desiredArray(this.value, referralsDataArray);
+                let labelArray = desiredLabels(this.value, referralsLabelArray);
+                globalChart.destroy();
+                globalChart = generateChart(labelArray,dataArray);
+
+            });
         </script>
     </body>
 </html>

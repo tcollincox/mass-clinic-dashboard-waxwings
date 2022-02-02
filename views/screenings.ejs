@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>
-            FollowUps
+            Referrals
         </title>
         <style>
-            .content{
+            *{
                 margin: 0px;
                 padding: 0px;
                 padding-top: 20px ;
@@ -36,20 +36,15 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <header>
-            <%- include('Partials/header'); %>
-        </header>
-        <div class="content">
         <a href="/">Home</a> 
-        <h1 class="header">Patient Follow Up Appointments</h1>
-        <table class="data_table" id="followups_table" >
+        <h1 class="header">Patient Screenings By Year</h1>
+        <table class="data_table" id="screening_table" >
             <tr>
-                <th>Type of Patient</th>
-                <th>Amount of People referred</th>
-                <th>Year</th>
+                <th>Patient Amount</th>
+                <th>Recorded Year</th>
             </tr>
-            <% followups.forEach(function(o) { %>
-                <tr><td><%= o.PatientType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% screenings.forEach(function(o) { %>
+                <tr><td><%= o.ToFrom %></td> <td><%= o.ScreenAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
         <div id="canvas_container">
@@ -57,39 +52,32 @@
         </div>
         
         <script>
-            let followUpsPatientTypeArray =[];
-            let followUpsPatientAmountArray =[];
-            let followUpsRecoredYear = [];
+            let screeningsPatientAmount =[];
+            let screeningsRecoredYear = [];
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
                 for(let i = 1; i<table.length; i++ ){
-                        followUpsPatientTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        followUpsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        followUpsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                        screeningsToFromArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                        screeningsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                        screeningsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
                 }
                 
             }
 
-            arrayTable("followups_table");
+            arrayTable("screening_table");
 
             const labels = [
-                "Diebetic 2019", 
-                "Diebetic 2020", 
-                "Diebetic 2021",
-                "Hypertensive 2019",
-                "Hypertensive 2020",
-                "Hypertensive 2021",
-                "Dual 2019",
-                "Dual 2020",
-                "Dual 2021"
+                "2019",
+                "2020",
+                "2021"
                 ];
                 const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'FollowUps',
+                    label: 'Screenings',
                     backgroundColor: 'rgb(100, 200, 132)',
                     
-                    data: followUpsPatientAmountArray,
+                    data: screeningsPatientAmountArray,
                 }]
                 };
             
@@ -104,6 +92,6 @@
                     config
                 );
         </script>
-        </div>
     </body>
 </html>
+
