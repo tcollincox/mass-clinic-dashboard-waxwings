@@ -12,9 +12,9 @@ const demographicsRouter = require("./routes/demographics.js");
 //const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
 const volunteers = require("./routes/volunteer.js");
-const applications = require('./routes/applications');
+const applications = require('./routes/applications.js');
+const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const screenings = require('./routes/screenings.js');
-
 
 
 var app = express();
@@ -38,8 +38,8 @@ app.use("/demographics", demographicsRouter);
 app.use("/followups", followups);
 app.use("/volunteers",volunteers);
 app.use("/applications", applications);
+app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/screenings", screenings);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
