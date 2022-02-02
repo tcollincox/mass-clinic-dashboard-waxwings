@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Patient Arrival Times
+        </title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                padding-top: 20px ;
+            }
+            
+            h1{
+                text-align: center;
+                margin: 0px auto;
+                width: 50%;
+            }
+            table{
+                border-collapse: collapse;
+            }
+            table, td, th{
+                border: 1px solid black ;
+                text-align: center;
+                padding:5px;
+            }
+            #canvas_container{
+                margin:0px auto ;
+                height: 270px; /*originially 200px 25%*/
+                width: 35%;
+            }
+            .data_table{
+                visibility: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <a href="/">Home</a> 
+        <h1 class="header">Arrival Times of MASS Clinic Patients</h1>
+        <table class="data_table" id="arrival_times_table" >
+            <tr>
+                <th>Time Arrived</th>
+                <th>Percent Amount</th>
+                <th>Patient Amount</th>
+            </tr>
+            <% patientArrivalTimes.forEach(function(o) { %>
+                <tr><td><%= o.TimeArrived %></td> <td><%= o.PercentAmount %></td><td><%= o.PatientAmount %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        
+        <script>
+            let patientTimeArrivedArray =[];
+            let patientPercentAmountArrivedArray =[];
+            let patientArrivedAmountArray = [];
+            function arrayTable(table_id){
+                let table = document.getElementById(table_id).rows;
+                for(let i = 1; i < table.length; i++ ){
+                    patientTimeArrivedArray.push(table[i].cells[0].childNodes[0].nodeValue);
+                    patientPercentAmountArrivedArray.push(table[i].cells[1].childNodes[0].nodeValue);
+                    patientArrivedAmountArray.push(table[i].cells[2].childNodes[0].nodeValue);
+                }
+            }
+
+            arrayTable("arrival_times_table");
+
+            const labels = [
+                "Arrived 90 minutes early", 
+                "Arrived 60 minutes early", 
+                "Arrived 30 minutes early",
+                "Arrived 15 minutes early",
+                "Arrived On Time",
+                "Arrived 15 minutes early",
+                "Arrived 30 minutes early",
+                "Arrived 60 minutes early",
+                "Arrived 90 minutes early"
+                ];
+                const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Patients',
+                    backgroundColor: [
+                        'rgb(100, 200, 132)'
+                    ],
+                    
+                    borderColor: [
+                        'rgb(128, 128, 128)',
+                    ],
+
+                    borderWidth: [1],
+
+                    data: patientArrivedAmountArray,
+                }]
+                };
+            
+                const config = {
+                    type: 'bar',
+                    data,
+                    options: {
+                    }
+                };
+
+                var myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        </script>
+    </body>
+</html>
+
