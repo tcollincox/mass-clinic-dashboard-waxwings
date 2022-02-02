@@ -8,7 +8,6 @@ const MassClinicDb = require('./config/database');
 
 var indexRouter = require('./routes/index');
 const referralsRouter = require("./routes/referral.js");
-const patientsRouter = require("./routes/patient.js")
 const demographicsRouter = require("./routes/demographics.js");
 const followups = require("./routes/followups.js")
 const volunteers = require("./routes/volunteer.js");
@@ -29,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use("/referrals", referralsRouter);
-app.use("/patients", patientsRouter);
 app.use("/demographics", demographicsRouter);
 app.use("/followups", followups);
 app.use("/volunteers",volunteers);
