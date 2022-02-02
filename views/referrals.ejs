@@ -119,13 +119,22 @@
             specifcLabelsArray = desiredLabels("All Years", referralsLabelArray);
 
 
-            function generateChart(labelArray, dataArray){
+            function generateChart(labelArray, dataArray,year){
+                let colorOptions = [];
+                if(year = "All years"){
+                    for(let i = 1; i <= dataArray.length; i++){
+                        if(i <= dataArray.length / 2){
+                            colorOptions.push('rgb(100, 200, 132)');
+                        }
+                        else(colorOptions.push('rgb(20, 20, 132)'))
+                    }
+                }
                 const labels = labelArray;
                 const data = {
                 labels: labels,
                 datasets: [{
                     label: 'Referrals To Mass Clinic',
-                    backgroundColor: ['rgb(100, 200, 132)','rgb(20, 20, 132)'],
+                    backgroundColor:colorOptions,
                     data: dataArray
                 }]
                 };
