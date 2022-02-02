@@ -1,10 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const referrals = db.define('{ProvidedScreening}', {
-    ToFrom: {
-        type: sequelize.STRING
-    },
+const screenings = db.define('ProvidedScreening', {
     PatientAmount: {
         type: sequelize.INTEGER
     },
@@ -15,4 +12,4 @@ const referrals = db.define('{ProvidedScreening}', {
     freezeTableName: true
 });
 
-module.exports = referrals;
+module.exports = screenings;

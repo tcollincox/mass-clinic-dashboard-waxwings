@@ -4,7 +4,7 @@ const db = require('../config/database');
 const Screenings = require('../Models/screening.js');
 
 router.get("/", (req, res) => Screenings.findAll({attributes: ['PatientAmount', 'RecordedYear']})
-.then(refs => {
+.then(screenings => {
     res.render('screenings.ejs', {screenings:screenings});
 })
 .catch(err => console.log("from routes: " + err)));

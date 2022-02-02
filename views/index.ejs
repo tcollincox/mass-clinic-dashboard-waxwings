@@ -7,6 +7,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
         <style>
             body{padding:10px;}
+            .top{
+                width: 100%;
+                position: relative;
+            }
+            .top-page{
+                display: inline-block;
+                justify-self: left;
+                margin:20px 30%;
+            }
             .dropbtn {
                 background-color: blue;
                 color: white;
@@ -15,7 +24,7 @@
                 border: none;
             }
             .dropdown {
-                position: relative;
+                margin-left: 20px;
                 display: inline-block;
             }
             .dropdown-content {
@@ -48,7 +57,7 @@
         </style>
     </head>
     <body>
-        <h1>Home page</h1>
+        <div class="top">
         <div class="dropdown">
             <button class="dropbtn">Options</button>
             <div class="dropdown-content">
@@ -60,6 +69,8 @@
                 <a href="/patientArrivalTime">Arrival Times for Patients</a>
             </div>
         </div>
+        <h1 class="top-page">Mass Clinic Dashboard</h1>
+        </div>
         <hr>
         <a class="chart" href="/referrals">Referrals</a>
         <a class="chart" href="/demographics">Demographics</a>
@@ -67,6 +78,7 @@
         <a class="chart" href="/volunteers">Volunteers</a>
         <a class="chart" href="/applications">Applications</a>
         <a class="chart" href="/patientArrivalTime">Arrival Times for Patients</a>
+        <a class="chart" href="/screenings">Screening</a>
 
 
         

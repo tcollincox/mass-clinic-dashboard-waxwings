@@ -45,7 +45,7 @@
                 <th>Recorded Year</th>
             </tr>
             <% screenings.forEach(function(o) { %>
-                <tr><td><%= o.ToFrom %></td> <td><%= o.ScreenAmount %></td><td><%= o.RecordedYear %></td></tr>
+                <tr><td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
         <div id="canvas_container">
@@ -57,10 +57,10 @@
             let screeningsRecoredYear = [];
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
+                console.log(table);
                 for(let i = 1; i<table.length; i++ ){
-                        screeningsToFromArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        screeningsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        screeningsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+                        screeningsPatientAmount.push(table[i].cells[0].childNodes[0].nodeValue);
+                        screeningsRecoredYear.push(table[i].cells[1].childNodes[0].nodeValue);
                 }
                 
             }
@@ -78,7 +78,7 @@
                     label: 'Screenings',
                     backgroundColor: 'rgb(100, 200, 132)',
                     
-                    data: screeningsPatientAmountArray,
+                    data: screeningsPatientAmount,
                 }]
                 };
             
