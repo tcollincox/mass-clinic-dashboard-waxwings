@@ -6,18 +6,15 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 const referralsRouter = require("./routes/referral.js");
-const patientsRouter = require("./routes/patient.js")
+const demographicsRouter = require("./routes/demographics.js");
 const optionsRouter = require("./routes/option.js");
 const insuranceRouter = require("./routes/insurance.js");
 const medVolunteersRouter = require("./routes/med_volunteer.js");
 const followups = require("./routes/followups.js")
-<<<<<<< Updated upstream
-const volunteers = require("./Routes/volunteer.js")
-=======
 const volunteers = require("./routes/volunteer.js");
 const applications = require('./routes/applications');
 const screenings = require('./routes/screenings.js');
->>>>>>> Stashed changes
+
 
 
 var app = express();
@@ -34,17 +31,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use("/referrals", referralsRouter);
-app.use("/patients", patientsRouter);
+app.use("/demographics", demographicsRouter);
 app.use("/options", optionsRouter);
 app.use("/medVolunteers",medVolunteersRouter);
 app.use("/insurance", insuranceRouter);
 app.use("/followups", followups);
 app.use("/volunteers",volunteers);
-<<<<<<< Updated upstream
-=======
 app.use("/applications", applications);
 app.use("/screenings", screenings);
->>>>>>> Stashed changes
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
