@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/database');
 const PatientArrivalTimes = require('../Models/patientArrivalTime');
 
 router.get("/", (req, res) => PatientArrivalTimes.findAll({attributes: ['TimeArrived', 'PercentAmount', 'PatientAmount']})

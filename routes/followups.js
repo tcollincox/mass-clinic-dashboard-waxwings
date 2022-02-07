@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/database');
 const Followups = require('../Models/followups');
 
 router.get("/", (req, res) => Followups.findAll({attributes: ['PatientType', 'PatientAmount', 'RecordedYear']})
