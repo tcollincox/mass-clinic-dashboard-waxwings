@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const patient = db.define('twentyFivePerTelehealthFollowUp', {
+const patients = db.define('twentyFivePerTelehealthReferred', {
 	TargetPercent:{
 		type: sequelize.INTEGER
 	},
@@ -21,4 +21,4 @@ const patient = db.define('twentyFivePerTelehealthFollowUp', {
 	freezeTableName: true
 });
 
-module.exports = patient;
+module.exports = patients;

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Patient = require('../Models/patientEncounter');
+const Patient = require('../Models/patientReferedToTelehealth');
 
-router.get('/', (req, res) => Patient.findAll({attributes: ['PatientAmount', 'RecordedYear', 'TargetNumber', ]})
+router.get('/', (req, res) => Patient.findAll({attributes: ['PatientType', 'PatientAmount', 'RecordedYear', ]})
 .then(patient => {
 	res.render('patient.ejs', {patient:patient});
 })
