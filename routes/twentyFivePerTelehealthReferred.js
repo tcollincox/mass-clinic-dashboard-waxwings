@@ -4,7 +4,7 @@ const Patients = require('../Models/twentyFivePerTelehealthReferred');
 
 router.get('/', (req, res) => Patients.findAll({attributes: ['TargetPercent', 'PercentAchived', 'RecordedYear', 'Numerator', 'Denominator', ]})
 .then(patients => {
-	res.render('patients.ejs', {patients:patients});
+	res.render('twentyFivePerTelehealthReferred.ejs', {patients:patients});
 })
 .catch(err => console.log('from routes: ' + err)));
 

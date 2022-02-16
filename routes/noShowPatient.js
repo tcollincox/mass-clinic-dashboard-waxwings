@@ -4,7 +4,7 @@ const Patient = require('../Models/noShowPatient');
 
 router.get('/', (req, res) => Patient.findAll({attributes: ['RecordedYear', 'PercentAmount', ]})
 .then(patient => {
-    res.render('patient.ejs', {patient:patient});
+    res.render('noShowPatient.ejs', {patient:patient});
 })
 .catch(err => console.log('from routes: ' + err)));
 
