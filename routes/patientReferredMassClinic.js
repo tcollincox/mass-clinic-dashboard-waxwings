@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Referrals = require('../Models/referral');
+const Referrals = require('../Models/patientReferredMassClinic');
 
 router.get("/", (req, res) => Referrals.findAll({attributes: ['ToFrom', 'PatientAmount', 'RecordedYear']})
-.then(refs => {
-    res.render('referrals.ejs', {referrals:refs});
+.then(patients => {
+    res.render('patientReferredMassClinic.ejs', {patients:patients});
 })
 .catch(err => console.log("from routes: " + err)));
 
