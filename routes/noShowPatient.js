@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Patient = require('../Models/noShowPatient');
 
-router.get('/', (req, res) => Patient.findAll({attributes: ['RecordedYear', 'PercentAmount', ]})
+router.get('/', (req, res) => Patient.findAll({attributes: ['RecordedYear', 'PercentAmount' ]})
 .then(patient => {
     res.render('noShowPatient.ejs', {patient:patient});
 })

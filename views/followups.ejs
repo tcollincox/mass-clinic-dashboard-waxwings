@@ -186,55 +186,6 @@
 
             });
         </script>
-        
-        <!-- <script>
-            let followUpsPatientTypeArray =[];
-            let followUpsPatientAmountArray =[];
-            let followUpsRecoredYear = [];
-            function arrayTable(table_id){
-                let table = document.getElementById(table_id).rows;
-                for(let i = 1; i<table.length; i++ ){
-                        followUpsPatientTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        followUpsPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        followUpsRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
-                }
-                
-            }
-
-            arrayTable("followups_table");
-
-            const labels = [
-                "Diebetic 2019", 
-                "Diebetic 2020", 
-                "Diebetic 2021",
-                "Hypertensive 2019",
-                "Hypertensive 2020",
-                "Hypertensive 2021",
-                "Dual 2019",
-                "Dual 2020",
-                "Dual 2021"
-                ];
-                const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'FollowUps',
-                    backgroundColor: 'rgb(100, 200, 132)',
-                    
-                    data: followUpsPatientAmountArray,
-                }]
-                };
-            
-                const config = {
-                    type: 'bar',
-                    data,
-                    options: {}
-                };
-
-                var myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
-        </script> -->
         </div>
     </body>
 </html>
