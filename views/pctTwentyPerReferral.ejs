@@ -5,6 +5,28 @@
     <title>Patient 20% Referral</title>
 </head>
 <body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <a href="/">Home</a> 
+    <div class="content">
+    <h1 class="header">Patient Follow Up Appointments</h1>
+    <table class="data_table" id="followups_table" >
+        <tr>
+            <th>Type of Patient</th>
+            <th>Amount of People referred</th>
+            <th>Year</th>
+    </tr>
+        <% patients.forEach(function(o) { %>
+            <td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td>
+        <% }); %>
+    </table>
+    <div id="canvas_container">
+        <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    <div class="new-line">
+        <label>Select Recored Year</label>
+        <select id="time-frame" name="time-frame">
+            <option>All Years</option>
+        </select>
+    </div>
 </body>
 </html>
