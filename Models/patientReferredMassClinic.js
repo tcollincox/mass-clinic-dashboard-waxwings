@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const referrals = db.define('PatientReferralsMassClinic', {
+const referrals = db.define('PatientReferredMassClinic', {
     ToFrom: {
         type: sequelize.STRING
     },
