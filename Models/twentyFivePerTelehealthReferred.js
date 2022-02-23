@@ -17,6 +17,9 @@ const patients = db.define('twentyFivePerTelehealthReferred', {
 	Denominator:{
 		type: sequelize.INTEGER
 	},
+	PatientType:{
+		type: sequelize.STRING
+	}
 }, {
 	freezeTableName: true
 });

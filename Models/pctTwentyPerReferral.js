@@ -17,6 +17,9 @@ const patient = db.define('pctTwentyPerReferral', {
 	Denominator:{
 		type: sequelize.INTEGER
 	},
+	PatientType:{
+		type: sequelize.STRING
+	}
 }, {
 	freezeTableName: true
 });
