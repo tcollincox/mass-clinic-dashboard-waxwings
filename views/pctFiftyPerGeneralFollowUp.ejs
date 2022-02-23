@@ -5,6 +5,31 @@
     <title>Patient 50% General Follow Up</title>
 </head>
 <body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <a href="/">Home</a> 
+    <div class="content">
+    <h1 class="header"></h1>
+    <table class="data_table" id="patient_table" >
+        <tr>
+            <th>TargetPercent</th>
+            <th>PercentAchived</th>
+            <th>RecordedYear</th>
+            <th>Numerator</th>
+            <th>Denominator</th>
+            <th>PatientType</th>
+        </tr>
+        <% patient.forEach(function(o) { %>
+            <tr><td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td><td><%= o.PatientType %></td></tr>
+        <% }); %>
+    </table>
+    <div id="canvas_container">
+        <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    <div class="new-line">
+        <label>Select Recored Year</label>
+        <select id="time-frame" name="time-frame">
+            <option>All Years</option>
+        </select>
+    </div>
 </body>
 </html>

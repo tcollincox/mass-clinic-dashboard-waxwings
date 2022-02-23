@@ -12,7 +12,7 @@ const followups = require("./routes/followups.js")
 const volunteers = require("./routes/volunteer.js");
 const applications = require('./routes/applications.js');
 const patientArrivalTimes = require("./routes/patientArrivalTime.js");
-const screenings = require('./routes/screenings.js');
+const patientAccessibility = require("./routes/patientAccessibility.js");
 
 
 var app = express();
@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
 app.use("/patientReferredMassClinic", referralsRouter);
 app.use("/demographics", demographicsRouter);
@@ -35,7 +36,7 @@ app.use("/followups", followups);
 app.use("/volunteers",volunteers);
 app.use("/applications", applications);
 app.use("/patientArrivalTime", patientArrivalTimes);
-app.use("/screenings", screenings);
+app.use("/patientAccessibility", patientAccessibility);
 app.use(function(req, res, next) {
   next(createError(404));
 });
