@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const patient = db.define('patientMedHome', {
+const patient = db.define('uniquePatientInYear', {
 	AmountOfYears:{
 		type: sequelize.STRING
 	},
