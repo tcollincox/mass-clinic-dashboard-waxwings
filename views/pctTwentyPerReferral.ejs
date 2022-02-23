@@ -9,7 +9,7 @@
     <a href="/">Home</a> 
     <div class="content">
     <h1 class="header">Patient Follow Up Appointments</h1>
-    <table class="data_table" id="followups_table" >
+    <table class="data_table" id="patient_table" >
         <tr>
             <th>Type of Patient</th>
             <th>Amount of People referred</th>
@@ -28,5 +28,10 @@
             <option>All Years</option>
         </select>
     </div>
+    <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        let array = returnArrayFromTable("patient_table");
+        console.log(array);
+    </script>
 </body>
 </html>

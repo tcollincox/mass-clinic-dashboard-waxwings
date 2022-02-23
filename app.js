@@ -13,6 +13,7 @@ const volunteers = require("./routes/volunteer.js");
 const applications = require('./routes/applications.js');
 const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
+const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 
 
 var app = express();
@@ -37,6 +38,8 @@ app.use("/volunteers",volunteers);
 app.use("/applications", applications);
 app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
+app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
+
 app.use(function(req, res, next) {
   next(createError(404));
 });
