@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <title>Patient 20% Referral</title>
+    <link type="text/css" href="css/style.css" rel="stylesheet">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,12 +12,15 @@
     <h1 class="header">Patient Follow Up Appointments</h1>
     <table class="data_table" id="patient_table" >
         <tr>
-            <th>Type of Patient</th>
-            <th>Amount of People referred</th>
-            <th>Year</th>
+            <th>TargetPercent</th>
+            <th>PercentAchived</th>
+            <th>RecordedYear</th>
+            <th>Numerator</th>
+            <th>Denominator</th>
+            <th>PatientType</th>
     </tr>
         <% patients.forEach(function(o) { %>
-            <td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td>
+            <td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td><td><%= o.PatientType %></td>
         <% }); %>
     </table>
     <div id="canvas_container">

@@ -14,6 +14,7 @@ const applications = require('./routes/applications.js');
 const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
+const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
 
 
 var app = express();
@@ -39,6 +40,7 @@ app.use("/applications", applications);
 app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
 app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
+app.use("/pctPrescriptApp", pctPrescriptApp);
 
 app.use(function(req, res, next) {
   next(createError(404));
