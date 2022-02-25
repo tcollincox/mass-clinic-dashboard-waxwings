@@ -5,77 +5,40 @@
             Home Page for Dashboard
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-        <style>
-            body{padding:10px;}
-            .top{
-                width: 100%;
-                position: relative;
-            }
-            .top-page{
-                display: inline-block;
-                justify-self: left;
-                margin:20px 30%;
-            }
-            .dropbtn {
-                background-color: blue;
-                color: white;
-                padding: 16px;
-                font-size: 16px;
-                border: none;
-            }
-            .dropdown {
-                margin-left: 20px;
-                display: inline-block;
-            }
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: white;
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                z-index: 1;
-            }
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-            .dropdown-content a:hover {background-color: white;}
-            .dropdown:hover .dropdown-content {display: block;}
-            .dropdown:hover .dropbtn {background-color: blue;}
-            .chart{
-                display: inline-block;
-                margin:50px 50px;
-                width:250px;
-                height: 300px;
-                font-size: large;
-                border: 2px solid black;
-                border-radius: 5px;
-                text-align: center;
-            }
-        </style>
+        <link type="text/css" rel="stylesheet" href="css/mainDashboard.css">
     </head>
     <body>
         <div class="top">
-        <div class="dropdown">
-            <button class="dropbtn">Options</button>
-            <div class="dropdown-content">
-                <a href="/patientReferredMassClinic">Mass Clinic Referrals</a>
-                <a href="/followups">Followups</a>
-                <a href="/demographics">Demographics</a>
-                <a href="/volunteers">Volunteers</a>
-                <a href="/applications">Applications</a> 
-                <a href="/patientArrivalTime">Arrival Times for Patients</a>
-                <a href="/patientAccessibility">Patient Accessibility</a>
-                <a href="/pctTwentyPerReferral">Patient Referral Goal</a>
-                <a href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a>
-                
+
+            <h1 class="top-page">Mass Clinic Dashboard</h1>
+            <div class="dropdown">
+                <button class="dropbtn">Options</button>
+                <div class="dropdown-content">
+                    <a href="/patientReferredMassClinic">Mass Clinic Referrals</a>
+                    <a href="/followups">Followups</a>
+                    <a href="/demographics">Demographics</a>
+                    <a href="/volunteers">Volunteers</a>
+                    <a href="/applications">Applications</a> 
+                    <a href="/patientArrivalTime">Arrival Times for Patients</a>
+                    <a href="/patientAccessibility">Patient Accessibility</a>
+                    <a href="/pctTwentyPerReferral">Patient Referral Goal</a>
+                    <a href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a>
+                    
+                </div>
             </div>
         </div>
-        <h1 class="top-page">Mass Clinic Dashboard</h1>
-        </div>
         <hr>
+
+        <input type="checkbox" name="" class="tab-btn"/>
+        <div class="nav-bar">
+            <ol>
+                <li><a href="#">Patients Encountered</a></li>
+                <li><a href="#">Patient Goal & Outcomes</a></li> <!--from excel sheet: outcomes, HTN diabetic-->
+                <li><a href="#">Demographics</a></li>
+                <li><a href="#">Patient Appointments</a></li> <!--from excel sheet: arrivalTime, accessibility, noShow, lastYearSeen, uniquePatient, appointmentType-->
+            </ol>
+        </div>
+
         <a class="chart" href="/patientReferredMassClinic">Mass Clinic Referrals</a>
         <a class="chart" href="/demographics">Demographics</a>
         <a class="chart" href="/followups">Followups</a>
