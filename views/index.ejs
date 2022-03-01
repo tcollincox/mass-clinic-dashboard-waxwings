@@ -10,36 +10,54 @@
     <body>
         <div class="top">
 
+            <img src="http://massclinic.org/wp-content/uploads/mass_logo_georgia-150x150-1.png" alt="MASS Clinic Logo" width= "150px" height="150px"/>
+
             <h1 class="top-page">Mass Clinic Dashboard</h1>
-            <div class="dropdown">
-                <button class="dropbtn">Options</button>
-                <div class="dropdown-content">
-                    <a href="/patientReferredMassClinic">Mass Clinic Referrals</a>
-                    <a href="/followups">Followups</a>
-                    <a href="/demographics">Demographics</a>
-                    <a href="/volunteers">Volunteers</a>
-                    <a href="/applications">Applications</a> 
-                    <a href="/patientArrivalTime">Arrival Times for Patients</a>
-                    <a href="/patientAccessibility">Patient Accessibility</a>
-                    <a href="/pctTwentyPerReferral">Patient Referral Goal</a>
-                    <a href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a>
-                    <a href="/pctTwentyPerReferral">Patients Referred to Telehealth</a>
-                    <a href="/pctFiftyPerGeneralFollowUp">Patients Who Followed up</a>
-                    <a href="/patientEncounter">Patients who joined in a given year</a>
-                    <a href="/pctEligibleHealthCare">Patients Eligible for health care</a>
-                    <a href="/pctChronicCare">Patients with Chronic Care Information</a>
-                </div>
-            </div>
+
+
+            <div class="dropdown-container">
+                <input type="checkbox" name="" id="" class="dropdown-btn">
+                <div class="dropdown-list">
+                     
+                    <a href="/applications">Applications</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/bloodA1C">Blood A1C</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/bloodPressure">Blood Pressure</a> <!--app.js stuff: variable and app.js-->  
+                    <a href="/cholesterol">Cholesterol</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/demographics">Demographics</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/followups">Follow-ups</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/noShowPatient">No Show Patients</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/patientAccessibility">Patient Accessibility</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/patientArrivalTime">Patient Arrival Times</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/patientEncounter">Patients Encountered</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/patientEnrollYear">Patient Enrolled Years</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/patientReferredMassClinic">Mass Clinic Referrals</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/patientReferredToTelehealth">Telehealth Referrals</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/patientTypeServe">Type of Patients Served</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/pctChronicCare">Chronic Care Percentages</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/pctEligibleHealthCare">Eligible for Prescription Assistance</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/pctFiftyPerGeneralFollowUp">Possibility of Follow-up Appointment Percentages</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/pctTwentyPerReferral">Eligible for Health Care Coverage</a> <!--part of orig batch: check for consistencty-->
+                    <a href="/placeOfCare">Place of Care</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/providedScreening">Provided Screenings</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/twentyFivePerTelehealthReferred">Patients Referred to Telehealth Percentages</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/uniquePatientInYear">Unique Patients Seen by Year</a> <!--app.js stuff: variable and app.js-->
+                    <a href="/volunteers">Volunteers</a> <!--part of orig batch: check for consistencty-->
+                </div>    
+            </div> 
+
+
         </div>
         <hr>
 
         <input type="checkbox" name="" class="tab-btn"/>
         <div class="nav-bar">
             <ol>
-                <li><a href="#">Patients Encountered</a></li>
-                <li><a href="#">Patient Goal & Outcomes</a></li> <!--from excel sheet: outcomes, HTN diabetic-->
-                <li><a href="#">Demographics</a></li>
-                <li><a href="#">Patient Appointments</a></li> <!--from excel sheet: arrivalTime, accessibility, noShow, lastYearSeen, uniquePatient, appointmentType-->
+                <li><a href="/">Main Dashboard</a></li>
+                <li><a href="/DashPatientsEncountered">Patients Encountered</a></li>
+                <li><a href="/DashPatientGoalOutcomes">Patient Goal & Outcomes</a></li> 
+                <li><a href="/DashDemographics">Demographics</a></li>
+                <li><a href="/DashPatientAppointments">Patient Appointments</a></li> <!--from excel sheet: arrivalTime, accessibility, noShow, lastYearSeen, uniquePatient, appointmentType-->
             </ol>
         </div>
 

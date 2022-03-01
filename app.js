@@ -6,6 +6,10 @@ var logger = require('morgan');
 const MassClinicDb = require('./config/database');
 
 var indexRouter = require('./routes/index');
+const dashDemographicsRouter = require("./routes/dashDemographics.js")
+const dashPatientAppointmentsRouter = require("./routes/dashPatientAppointments.js")
+const dashPatientGoalOutcomesRouter = require("./routes/dashPatientGoalOutcomes.js")
+const dashPatientEncounteredRouter = require("./routes/dashPatientsEncountered.js")
 const referralsRouter = require("./routes/patientReferredMassClinic.js");
 const demographicsRouter = require("./routes/demographics.js");
 const followups = require("./routes/followups.js")
@@ -15,6 +19,7 @@ const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
+const bloodA1CRouter = require("./routes/bloodA1C.js"); //started new list here
 const pctFiftyPerGeneralFollowUp = require("./routes/pctFiftyPerGeneralFollowUp.js");
 const patientEncounter = require('./routes/patientEncounter.js');
 const pctEligibleHealthCare = require('./routes/pctEligibleHealthCare.js');
@@ -35,6 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
+app.use("/dashDemographics", dashDemographicsRouter);
+app.use("/dashPatientAppointments", dashPatientAppointmentsRouter);
+app.use("/dashPatientGoalOutcomes", dashPatientGoalOutcomesRouter);
+app.use("/dashPatientsEncountered", dashPatientEncounteredRouter);
 app.use("/patientReferredMassClinic", referralsRouter);
 app.use("/demographics", demographicsRouter);
 app.use("/followups", followups);
@@ -44,6 +53,7 @@ app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
 app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
 app.use("/pctPrescriptApp", pctPrescriptApp);
+app.use("/bloodA1C", bloodA1CRouter);
 app.use("/pctFiftyPerGeneralFollowUp", pctFiftyPerGeneralFollowUp);
 app.use("/patientEncounter", patientEncounter);
 app.use("/pctEligibleHealthCare", pctEligibleHealthCare);
