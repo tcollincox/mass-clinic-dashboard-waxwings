@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Referrals
+            Referrals to and from Mass clinic
         </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
         <link type="text/css" href="css/style.css" rel="stylesheet">
@@ -11,11 +11,11 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <a href="/">Home</a> 
         <h1 class="header">Referrals To and From Mass Clinic</h1>
-        <table class="data_table" id="referral_table" >
+        <table class="data_table" id="patient_table" >
             <tr>
-                <th>To or From</th>
-                <th>Amount of People referred</th>
-                <th>Year</th>
+                <th>ToFrom</th>
+                <th>PatientAmount</th>
+                <th>RecordedYear</th>
             </tr>
             <% patients.forEach(function(o) { %>
                 <tr><td><%= o.ToFrom %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
@@ -30,119 +30,39 @@
                 <option>All Years</option>
             </select>
         </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        const chosenField = "PatientAmount";
+        let dataArray = returnArrayFromTable("patient_table");
         
-        <script>
-            let referralsDataArray =[];
-            let referralsLabelArray = [];
-            let usedArray = [];
-            let specifcLabelsArray = [];
-            let referralsYearArray = [];
+        let years = makeYearArray(dataArray, "RecordedYear");
+        addSelectYears(years);
+        
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        console.log(dataArray);
+        let labelArray = makeLabelArray(dataArray, "ToFrom", true);
+        let colorArray = makeMultipleColorArray( 2, false, years.length);
+        console.log();
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patients", 'bar' )
+        
 
-            function arrayTable(table_id){
-                let table = document.getElementById(table_id).rows;
-                for(let i = 1; i<table.length; i++ ){
-                        referralsLabelArray.push(table[i].cells[0].childNodes[0].nodeValue + " " + table[i].cells[2].childNodes[0].nodeValue);
-                        referralsDataArray.push({ToFrom:table[i].cells[0].childNodes[0].nodeValue,PatientAmount:table[i].cells[1].childNodes[0].nodeValue,RecordedYear:table[i].cells[2].childNodes[0].nodeValue});
-                        referralsYearArray.push(table[i].cells[2].childNodes[0].nodeValue);
-                }
-                
-            }
-
-            function desiredArray(year, fullArray){
-                let tempArray = [];
-                if(year == "All Years"){   
-                    for(let i = 0; i<fullArray.length; i++){
-                        tempArray.push(fullArray[i].PatientAmount);
-                    }
-                    return tempArray;
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "ToFrom", true);
+                let changedColorArray = [];
+                if(this.value == "All Years"){
+                    changedColorArray = makeMultipleColorArray(2, false, years.length);
                 }
                 else{
-                    for(let i = 0; i<fullArray.length ; i++){
-                        if(fullArray[i].RecordedYear == year){
-                            tempArray.push(fullArray[i].PatientAmount);
-                        }
-                    }
-                    return tempArray;
+                    changedColorArray = makeMultipleColorArray(2, true, 1);
                 }
-            }
-
-            function desiredLabels(year, fullArray){
-                let tempArray = [];
-                if(year == "All Years"){    
-                    return fullArray;
-                }
-                else{
-                    tempArray.push("To " + year, "From " + year);
-                }
-                return tempArray;
-            }
-
-            arrayTable("referral_table");
-            usedArray = desiredArray("All Years", referralsDataArray);
-            specifcLabelsArray = desiredLabels("All Years", referralsLabelArray);
-
-
-            function generateChart(labelArray, dataArray,year){
-                let colorOptions = [];
-                if(year = "All years"){
-                    for(let i = 1; i <= dataArray.length; i++){
-                        if(i <= dataArray.length / 2){
-                            colorOptions.push('rgb(100, 200, 132)');
-                        }
-                        else(colorOptions.push('rgb(20, 20, 132)'))
-                    }
-                }
-                const labels = labelArray;
-                const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'Referrals To Mass Clinic',
-                    backgroundColor:colorOptions,
-                    data: dataArray
-                }]
-                };
-            
-                const config = {
-                    type: 'bar',
-                    data,
-                    options: {}
-                };
-
-                var myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
-
-                return myChart;
-            }
-
-            
-            
-            function addSelectYears(DataArray){
-                let select = document.getElementById('time-frame');
-                let years = [];
-                years = [... new Set(DataArray)]
-                for(let i = 0; i <years.length; i++){
-                    let option = document.createElement("option");
-                    option.text = years[i];
-                    select.add(option);
-                }
-                
-            }
-
-            
-
-            let globalChart = generateChart(specifcLabelsArray,usedArray);
-            addSelectYears(referralsYearArray);
-
-            document.getElementById('time-frame').addEventListener('change', function() {
-                let dataArray = desiredArray(this.value, referralsDataArray);
-                let labelArray = desiredLabels(this.value, referralsLabelArray);
                 globalChart.destroy();
-                globalChart = generateChart(labelArray,dataArray);
-
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Number Of Patients", 'bar');
             });
-        </script>
+
+    </script>
+        
     </body>
 </html>
 

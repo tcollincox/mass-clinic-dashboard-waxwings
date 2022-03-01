@@ -20,7 +20,10 @@ const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
 const bloodA1CRouter = require("./routes/bloodA1C.js"); //started new list here
-
+const pctFiftyPerGeneralFollowUp = require("./routes/pctFiftyPerGeneralFollowUp.js");
+const patientEncounter = require('./routes/patientEncounter.js');
+const pctEligibleHealthCare = require('./routes/pctEligibleHealthCare.js');
+const pctChronicCare = require('./routes/pctChronicCare.js');
 
 var app = express();
 
@@ -50,7 +53,11 @@ app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
 app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
 app.use("/pctPrescriptApp", pctPrescriptApp);
-app.use("/bloodA1C", bloodA1CRouter);//started new list here
+app.use("/bloodA1C", bloodA1CRouter);
+app.use("/pctFiftyPerGeneralFollowUp", pctFiftyPerGeneralFollowUp);
+app.use("/patientEncounter", patientEncounter);
+app.use("/pctEligibleHealthCare", pctEligibleHealthCare);
+app.use("/pctChronicCare", pctChronicCare);
 
 app.use(function(req, res, next) {
   next(createError(404));

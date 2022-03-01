@@ -18,9 +18,9 @@
             <th>Numerator</th>
             <th>Denominator</th>
             <th>PatientType</th>
-    </tr>
+         </tr>
         <% patients.forEach(function(o) { %>
-            <td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td><td><%= o.PatientType %></td>
+           <tr><td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td><td><%= o.PatientType %></td></tr>
         <% }); %>
     </table>
     <div id="canvas_container">
@@ -34,8 +34,36 @@
     </div>
     <script src="javascript/array.js" type="text/javascript"></script>
     <script>
-        let array = returnArrayFromTable("patient_table");
-        console.log(array);
+        const chosenField = "Numerator";
+        let dataArray = returnArrayFromTable("patient_table");
+        
+        let years = makeYearArray(dataArray, "RecordedYear");
+        addSelectYears(years);
+        
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        console.log(dataArray);
+        let labelArray = makeLabelArray(dataArray, "PatientType", true);
+        let colorArray = makeMultipleColorArray( 3, false, years.length);
+        console.log();
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patients", 'bar' )
+        
+
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "PatientType", true);
+                let changedColorArray = [];
+                if(this.value == "All Years"){
+                    changedColorArray = makeMultipleColorArray(3, false, years.length);
+                }
+                else{
+                    changedColorArray = makeMultipleColorArray(3, true, 1);
+                }
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Number Of Patients", 'bar');
+            });
+
     </script>
+
 </body>
 </html>

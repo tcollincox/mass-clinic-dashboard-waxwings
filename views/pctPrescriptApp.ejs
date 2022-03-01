@@ -42,7 +42,7 @@
         //gets labels
         let labelArray = makeLabelArray(dataArray, "RecordedYear", false);
         //gets colors array - currently can only create array of one color
-        let colorArray = makeColorArray(dataArray, 1);
+        let colorArray = makeColorArray(dataArray);
         //creates graph
         let globalChart = generateChart(labelArray, valuesArray, colorArray, "Percent Achived", 'bar' )
         //makes dropdown
@@ -54,7 +54,7 @@
                 let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
                 let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
                 let changedLabelArray = makeLabelArray(changedDataArray, "RecordedYear", false);
-                let changedColorArray = makeColorArray(changedDataArray, 1);
+                let changedColorArray = makeColorArray(changedDataArray);
                 globalChart.destroy();
                 globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Percent Achived", 'bar');
             });
