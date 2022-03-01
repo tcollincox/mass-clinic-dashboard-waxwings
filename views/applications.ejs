@@ -11,11 +11,11 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <a href="/">Home</a> 
         <h1 class="header">Applications to Various Programs</h1>
-        <table class="data_table" id="application_table" >
+        <table class="data_table" id="patient_table" >
             <tr>
-                <th>Type of Application</th>
-                <th>Amount of People Who Applied</th>
-                <th>Year</th>
+                <th>ApplicationType</th>
+                <th>PatientAmount</th>
+                <th>RecordedYear</th>
             </tr>
             <% applications.forEach(function(o) { %>
                 <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
@@ -24,52 +24,39 @@
         <div id="canvas_container">
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
-        
+        <div class="new-line">
+            <label>Select Recored Year</label>
+            <select id="time-frame" name="time-frame">
+                <option>All Years</option>
+            </select>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
         <script>
-            let applicationApplicationTypeArray =[];
-            let applicationPatientAmountArray =[];
-            let applicationRecoredYear = [];
-            function arrayTable(table_id){
-                let table = document.getElementById(table_id).rows;
-                for(let i = 1; i<table.length; i++ ){
-                        applicationApplicationTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-                        applicationPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-                        applicationRecoredYear.push(table[i].cells[2].childNodes[0].nodeValue);
+        const chosenField = "PatientAmount"
+        let dataArray = returnArrayFromTable("patient_table");
+        console.log(dataArray);
+        let years = makeYearArray(dataArray, "RecordedYear");
+        addSelectYears(years);
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        let labelArray = makeLabelArray(dataArray, "ApplicationType", true, false);
+        let colorArray = makeMultipleColorArray(2,false, years.length );
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patient Applications", 'bar' );
+
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "ApplicationType", true, false);
+                if(this.value == "All Years"){
+                    changedColorArray = makeMultipleColorArray( 2, false, years.length);
                 }
-                
-            }
-
-            arrayTable("application_table");
-
-            const labels = [
-                "Insurance 2019", 
-                "Insurance 2020", 
-                "Insurance 2021",
-                "Prescription 2019",
-                "Prescription 2020",
-                "Prescription 2021"
-                ];
-                const data = {
-                labels: labels,
-                datasets: [{
-                    label: 'Applications',
-                    backgroundColor: 'rgb(100, 200, 132)',
-                    
-                    data: applicationPatientAmountArray,
-                }]
-                };
-            
-                const config = {
-                    type: 'bar',
-                    data,
-                    options: {}
-                };
-
-                var myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
-        </script>
+                else{
+                    changedColorArray = makeMultipleColorArray( 2, true, 1);
+                }
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Number Of Patients", 'bar');
+            });
+    </script>
+           
     </body>
 </html>
 
