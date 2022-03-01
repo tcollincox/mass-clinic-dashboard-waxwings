@@ -9,12 +9,12 @@ body{
 .top-page{
     display: inline-block;
     justify-self: right;
-    margin:20px 20%;
+    margin:20px 25%;
 }
 h4{
     display: inline;
     justify-self: right;
-    margin:20px 30%;
+    margin: 37%;
     color: #3156A3;
 }
 
@@ -141,8 +141,10 @@ h4{
 
 .dropdown-container{
     width: 175px;
-    position: relative;
+    position: absolute;
     float: right;
+    top: 0px;
+    right: 0px;
 }
 
 .dropdown-btn{
@@ -209,9 +211,11 @@ input:checked ~ .dropdown-list{clip-path:none;}
     color:rgb(36, 36, 36);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.062);
-    transition: background .4s;
+    transition: all .4s;
+    transform: scaleX(1);
 }
 .dropdown-list a:hover{
     background: linear-gradient(to right, #3156A3, #0384CE, #42B3E5);
     color: white;
+    transform: scaleX(1.05);
 }

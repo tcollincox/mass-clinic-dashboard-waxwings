@@ -19,6 +19,7 @@ const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
+const bloodA1CRouter = require("./routes/bloodA1C.js"); //started new list here
 
 
 var app = express();
@@ -49,6 +50,7 @@ app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
 app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
 app.use("/pctPrescriptApp", pctPrescriptApp);
+app.use("/bloodA1C", bloodA1CRouter);//started new list here
 
 app.use(function(req, res, next) {
   next(createError(404));
