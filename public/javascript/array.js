@@ -43,10 +43,16 @@ function desiredArrayByYear(year, dataArray, key){
 
 //given your full data array of JSON objects, a string that is your desired lable for each bar, and a boolean choosing whether or not 
 //you want to add the year automatically to your label, this will return an array of labels
-function makeLabelArray(dataArray, desiredLabel, addYear){
+function makeLabelArray(dataArray, desiredLabel, addYear, customLabel){
     let labelArray = [];
-    if(addYear){
+    if(addYear && customLabel){
         dataArray.forEach(data => { labelArray.push(desiredLabel + " " + data.RecordedYear); });
+    }
+    else if(addYear && !customLabel){
+        dataArray.forEach(data => { labelArray.push(data[desiredLabel] + " " + data.RecordedYear); });
+    }
+    else if(!addYear && !customLabel){
+        dataArray.forEach(data => { labelArray.push(data[desiredLabel]); });
     }
     else{
         dataArray.forEach(data => { labelArray.push(data[desiredLabel]); });
@@ -57,16 +63,35 @@ function makeLabelArray(dataArray, desiredLabel, addYear){
 //given your full data array of JSON objects and the name of the column of your years (typically names "RecordedYear") this returns an array of the years
 function makeYearArray(dataArray, yearString){
     let yearArray = [];
-    dataArray.forEach(data => { yearArray.push(data[yearString]); });
+    dataArray.forEach(data => { if(!yearArray.includes(data[yearString])) yearArray.push(data[yearString]); });
     return yearArray;
 }
 
-//given your full data array of JSON objects and how many different colors you want (1-3) this returns an array of color options in rbg format
-function makeColorArray(dataArray, numberOfDifferences){
+//given your full data array of JSON objects this returns an array of color options in rbg format
+function makeColorArray(dataArray){
     let colorArray = [];
-    if(numberOfDifferences == 1){
         for(let i = 0; i < dataArray.length; i++){
-            colorArray.push('rgb(100, 200, 132)');
+            colorArray.push('rgb(66, 179, 229 )');
+        }
+    return colorArray;
+}
+
+//given your full data array of JSON objects and how many different colors you want (1-9), a boolean of wether or not you want to alternate, and the number of years this will cover, this returns an array of color options in rbg format
+function makeMultipleColorArray( numberOfColors, alternate, years){
+    let colorOptions = ['rgb(66, 179, 229 )', 'rgb(26, 109, 185 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(45, 187, 204 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )'];
+    let colorArray = [];
+    if(alternate){
+        for(let i = 0; i< years; i++){
+            for(let j = 0; j < numberOfColors; j++){
+                colorArray.push(colorOptions[j]);
+            }
+        }
+    }
+    else{
+        for(let i = 0; i< numberOfColors; i++){
+            for(let j = 0; j < years; j++){
+                colorArray.push(colorOptions[i]);
+            }
         }
     }
     return colorArray;
@@ -114,6 +139,38 @@ function generateChart(labelArray, dataArray, colorOptions, chartLabel, chartTyp
     const config = {
         type: chartType,
         data
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    return myChart;
+}
+
+//given an array of labels, your full data array of JSON objects, an array of color options, a string that is the label of your chart, and a string that is 
+// your desired chart type this goes into the html document and adds a graph with no labels to your empty graph area .
+function generateChartNoLabels(labelArray, dataArray, colorOptions, chartLabel, chartType){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data,
+        options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
     };
 
     var myChart = new Chart(

@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <title>Patient pctChronic Care</title>
+    <title>Patient Chronic Care Screening</title>
+    <link type="text/css" href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <a href="/">Home</a> 
+    <div class="content">
+    <h1 class="header">Patients who recived Chronic care Inforamtion</h1>
+    <table class="data_table" id="patient_table" >
+        <tr>
+            <th>TargetPercent</th>
+            <th>PercentAchived</th>
+            <th>RecordedYear</th>
+            <th>Numerator</th>
+            <th>Denominator</th>
+        </tr>
+        <% patient.forEach(function(o) { %>
+            <tr><td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td></tr>
+        <% }); %>
+    </table>
+    <div id="canvas_container">
+        <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    <div class="new-line">
+        <label>Select Recored Year</label>
+        <select id="time-frame" name="time-frame">
+            <option>All Years</option>
+        </select>
+    </div>
+    <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        const chosenField = "Numerator"
+        let dataArray = returnArrayFromTable("patient_table");
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        let labelArray = makeLabelArray(dataArray, "RecordedYear", false);
+        let colorArray = makeColorArray(dataArray);
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Patients", 'bar' )
+        let years = makeYearArray(dataArray, "RecordedYear");
+        addSelectYears(years);
+
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "RecordedYear", false);
+                let changedColorArray = makeColorArray(changedDataArray);
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Patients", 'bar');
+            });
+
+    </script>
 </body>
 </html>
