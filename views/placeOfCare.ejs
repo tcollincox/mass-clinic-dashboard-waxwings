@@ -49,5 +49,59 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
+
+        <div class="content">
+        <h1 class="header">General Place for Patient Care</h1>
+        <table class="data_table" id="patient_table" >
+            <tr>
+                <th>AppttypeGroup</th>
+                <th>AppttypeSpecific</th>
+                <th>PatientEncounters</th>
+                <th>UniquePatients</th>
+            </tr>
+            <% patient.forEach(function(o) { %>
+                <tr><td><%= o.AppttypeGroup %></td><td><%= o.AppttypeSpecific %></td><td><%= o.PatientEncounters %></td><td><%= o.UniquePatients %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        <div class="new-line">
+            <label>Select Recored Year</label>
+            <select id="time-frame" name="time-frame">
+                <option>All Years</option>
+            </select>
+        </div>
+
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        //name of column you want data from
+        const chosenField = "PatientEncounters"
+        //giving function table id
+        let dataArray = returnArrayFromTable("patient_table");
+        //gets array of values
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        //gets labels
+        let labelArray = makeLabelArray(dataArray, "AppttypeGroup", false);
+        //gets colors array - currently can only create array of one color
+        let colorArray = makeColorArray(dataArray);
+        //creates graph
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmountSpecifc", 'bar' )
+        //makes dropdown
+        let years = makeYearArray(dataArray, "AppttypeGroup");
+        addSelectYears(years);
+
+        //changing the value on the chart based on selection in the dropdown
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "AppttypeGroup");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "AppttypeGroup", false);
+                let changedColorArray = makeColorArray(changedDataArray);
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "PatientEncounters", 'bar');
+            });
+
+    </script>
+
 </body>
 </html>

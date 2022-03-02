@@ -49,5 +49,60 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
+
+        
+        <h1 class="header">Patients Blood A1C</h1>
+        <table class="data_table" id="patients_table" >
+            <tr>
+                <th>TimePeriod</th>
+                <th>NumDom</th>
+                <th>TotalPercent</th>
+                <th>PatientAmountSpecifc</th>
+                <th>PatientAmountTotal</th>
+            </tr>
+            <% patients.forEach(function(o) { %>
+                <tr><td><%= o.TimePeriod %></td><td><%= o.NumDom %></td><td><%= o.TotalPercent %></td><td><%= o.PatientAmountSpecifc %></td><td><%= o.PatientAmountTotal %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        <div class="new-line">
+            <label>Select Recored Year</label>
+            <select id="time-frame" name="time-frame">
+                <option>All Years</option>
+            </select>
+        </div>
+
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        //name of column you want data from
+        const chosenField = "PatientAmountSpecifc"
+        //giving function table id
+        let dataArray = returnArrayFromTable("patients_table");
+        //gets array of values
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        //gets labels
+        let labelArray = makeLabelArray(dataArray, "TimePeriod", false);
+        //gets colors array - currently can only create array of one color
+        let colorArray = makeColorArray(dataArray);
+        //creates graph
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmountSpecifc", 'bar' )
+        //makes dropdown
+        let years = makeYearArray(dataArray, "TimePeriod");
+        addSelectYears(years);
+
+        //changing the value on the chart based on selection in the dropdown
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "TimePeriod");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "TimePeriod", false);
+                let changedColorArray = makeColorArray(changedDataArray);
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "TotalPercent", 'bar');
+            });
+
+    </script>
+
 </body>
 </html>
