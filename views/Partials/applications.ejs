@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h1 class="header">Applications to Various Programs</h1>
+        <table class="data_table" id="patient_table" >
+            <tr>
+                <th>ApplicationType</th>
+                <th>PatientAmount</th>
+                <th>RecordedYear</th>
+            </tr>
+            <% patient.forEach(function(o) { %>
+                <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+        <script>
+        const chosenField = "PatientAmount"
+        let dataArray = returnArrayFromTable("patient_table");
+        let years = makeYearArray(dataArray, "RecordedYear");
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        let labelArray = makeLabelArray(dataArray, "ApplicationType", true, false);
+        let colorArray = makeMultipleColorArray(2,false, years.length );
+        let globalChart = generateChartNoLabelsAll(labelArray, valuesArray, colorArray, "Number Of Patient Applications", 'bar' );
+
+        </script>
+           
+    </body>
+</html>
+
+ 

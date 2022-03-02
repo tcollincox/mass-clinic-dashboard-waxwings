@@ -84,7 +84,6 @@
         addSelectYears(years);
         
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
-        console.log(dataArray);
         let labelArray = makeLabelArray(dataArray, "PatientType", true, false);
         let colorArray = makeMultipleColorArray( 3, false, years.length);
         let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patients", 'bar' )

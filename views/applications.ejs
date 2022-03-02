@@ -59,7 +59,7 @@
                 <th>PatientAmount</th>
                 <th>RecordedYear</th>
             </tr>
-            <% applications.forEach(function(o) { %>
+            <% patient.forEach(function(o) { %>
                 <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
@@ -76,7 +76,6 @@
         <script>
         const chosenField = "PatientAmount"
         let dataArray = returnArrayFromTable("patient_table");
-        console.log(dataArray);
         let years = makeYearArray(dataArray, "RecordedYear");
         addSelectYears(years);
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);

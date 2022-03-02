@@ -1,0 +1,20 @@
+*{
+    margin: auto;
+    padding: auto;
+}
+h1{
+    width:auto;
+    text-align: center;
+    display:block;
+    color: #42B3E5;
+    font-size: medium;
+}
+table{
+    border-collapse: collapse;
+}
+#canvas_container{
+    height: 70%;
+}
+.data_table{
+    visibility: collapse;
+}

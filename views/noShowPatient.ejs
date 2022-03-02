@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link type="text/css" href="css/style.css" rel="stylesheet">
-    <title>General Referral</title>
+    <title>No Show</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -50,8 +50,7 @@
             </ol>
         </div>
 
-        <div class="content">
-        <h1 class="header"></h1>
+        <h1 class="header">Patient No Show by Percent</h1>
         <table class="data_table" id="patient_table" >
             <tr>
                 <th>RecordedYear</th>
@@ -84,7 +83,7 @@
         //gets colors array - currently can only create array of one color
         let colorArray = makeColorArray(dataArray);
         //creates graph
-        let globalChart = generateChart(labelArray, valuesArray, colorArray, "RecordedYear", 'bar' )
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Percent of Patients", 'bar' )
         //makes dropdown
         let years = makeYearArray(dataArray, "RecordedYear");
         addSelectYears(years);
@@ -96,7 +95,7 @@
                 let changedLabelArray = makeLabelArray(changedDataArray, "RecordedYear", false);
                 let changedColorArray = makeColorArray(changedDataArray);
                 globalChart.destroy();
-                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "PercentAmount", 'bar');
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Percent of Patients", 'bar');
             });
 
     </script>
