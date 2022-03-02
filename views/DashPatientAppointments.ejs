@@ -9,7 +9,6 @@
     </head>
     <body>
         <div class="top">
-
             <img src="http://massclinic.org/wp-content/uploads/mass_logo_georgia-150x150-1.png" alt="MASS Clinic Logo" width= "150px" height="150px"/>
 
             <h1 class="top-page">Mass Clinic Dashboard</h1>
@@ -49,8 +48,7 @@
         </div>
         <br>
         <hr>
-
-        <input type="checkbox" name="" class="tab-btn"/>
+        
         <div class="nav-bar">
             <ol>
                 <li><a href="/">Main Dashboard</a></li>
@@ -60,9 +58,13 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-
-        <a class="chart" href="/patientReferredMassClinic">TODO</a>   
-
-        
+        <div class="chart-section">
+            <div class="chart"><%- include('Partials/noShowPatient', {patient:data.noShowPatient})%><a href="/noShowPatient">See More</a></div> 
+            <div class="chart"><%- include('Partials/patientAccessibility', {patient:data.patientAccessibility})%><a href="/patientAccessibility">See More</a></div> 
+            <div class="chart"><%- include('Partials/patientArrivalTime', {patientArrivalTimes:data.patientArrivalTime})%><a href="/patientArrivalTime">See More</a></div>
+            <!-- needs fixing <div class="chart"><a href="/patientEnrollYear">See More</a></div>   -->
+            <!-- <div class="chart"><a href="/placeOfCare">See More</a></div>  -->
+            <div class="chart"><%- include('Partials/uniquePatientInYear', {patient:data.uniquePatientInYear})%><a href="/uniquePatientInYear">See More</a></div> 
+        </div>
     </body>
 </html>

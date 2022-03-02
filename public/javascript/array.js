@@ -1,7 +1,6 @@
 //given the Id of a html table this returns an array of Json objects that match up to the rows of your table.
 function returnArrayFromTable(tableId){
     table = document.getElementById(tableId);
-
     columnCount = table.rows[0].cells.length;
 
     const labels = [];
@@ -175,6 +174,76 @@ function generateChartNoLabels(labelArray, dataArray, colorOptions, chartLabel, 
 
     var myChart = new Chart(
         document.getElementById('myChart'),
+        config
+    );
+
+    return myChart;
+}
+
+function generateChartNoLabelsAll(labelArray, dataArray, colorOptions, chartLabel, chartType){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data,
+        options:{
+            scales:{
+                x: {
+                    display: false
+                }
+            },
+            plugins: {
+                legend: {
+                  display: false
+                }
+            }
+        }
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    return myChart;
+}
+
+function generateChartPartial(labelArray, dataArray, colorOptions, chartLabel, chartType, chartId){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data,
+        options:{
+            scales:{
+                x: {
+                    display: false
+                }
+            },
+            plugins: {
+                legend: {
+                  display: false
+                }
+            }
+        }
+    };
+
+    var myChart = new Chart(
+        document.getElementById(chartId),
         config
     );
 

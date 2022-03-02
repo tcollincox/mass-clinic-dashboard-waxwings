@@ -49,10 +49,6 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-
-
-    
-    <div class="content">
     <h1 class="header">Time it Takes a Patient to Get an Appointment</h1>
     <table class="data_table" id="patient_table" >
         <tr>
@@ -74,10 +70,9 @@
         const chosenField = "PercentAmount"
         let dataArray = returnArrayFromTable("patient_table");
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
-        console.log(valuesArray);
         let labelArray = makeLabelArray(dataArray, "AmountOfTime", false);
         let colorArray = ['rgb(66, 179, 229 )', 'rgb(45, 187, 204 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(26, 109, 185 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )'];
-        let globalChart = generateChartNoLabels(labelArray, valuesArray, colorArray, "How Accessible", 'pie' )
+        let globalChart = generateChartNoLabelsAll(labelArray, valuesArray, colorArray, "How Accessible", 'pie' )
 
     </script>
 </body>

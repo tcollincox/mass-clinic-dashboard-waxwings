@@ -73,7 +73,6 @@
             let screeningsRecoredYear = [];
             function arrayTable(table_id){
                 let table = document.getElementById(table_id).rows;
-                console.log(table);
                 for(let i = 1; i<table.length; i++ ){
                         screeningsPatientAmount.push(table[i].cells[0].childNodes[0].nodeValue);
                         screeningsRecoredYear.push(table[i].cells[1].childNodes[0].nodeValue);

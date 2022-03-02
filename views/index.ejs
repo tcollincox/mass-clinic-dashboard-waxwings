@@ -60,22 +60,20 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-
-        <div class="card-area">
-            <a class="chart" href="/patientReferredMassClinic">Mass Clinic Referrals</a>
-            <a class="chart" href="/demographics">Demographics</a>
-            <a class="chart" href="/followups">Followups</a>
-            <a class="chart" href="/volunteers">Volunteers</a>
-            <a class="chart" href="/applications">Applications</a> 
-            <a class="chart" href="/patientArrivalTime">Arrival Times for Patients</a>
-            <a class="chart" href="/patientAccessibility">Patient Accessibility</a>
-            <a class="chart" href="/pctTwentyPerReferral">Patient Referral Goal</a>
-            <a class="chart" href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a>
-            <a class="chart" href="/pctTwentyPerReferral">Patients Referred to Telehealth</a>
-            <a class="chart" href="/pctFiftyPerGeneralFollowUp">Patients Who Followed up</a>
-            <a class="chart" href="/patientEncounter">Patients who joined in a given year</a>
-            <a class="chart" href="/pctEligibleHealthCare">Patients Eligible for health care</a>
-            <a class="chart" href="/pctChronicCare">Patients with Chronic Care Information</a>
-        </div>
+        <a class="chart" href="/patientReferredMassClinic">Mass Clinic Referrals</a>
+        <a class="chart" href="/demographics">Demographics</a>
+        <a class="chart" href="/followups">Followups</a>
+        <a class="chart" href="/volunteers">Volunteers</a>
+        <div class="chart"><%- include('Partials/applications', {patient:data.applications})%><a href="/applications">See More</a></div> 
+        <a class="chart" href="/patientArrivalTime">Arrival Times for Patients</a>
+        <a class="chart" href="/patientAccessibility">Patient Accessibility</a>
+        <a class="chart" href="/pctTwentyPerReferral">Patient Referral Goal</a>
+        <a class="chart" href="/pctPrescriptApp">Patients Eligible for Prescription Assistance</a>
+        <a class="chart" href="/pctTwentyPerReferral">Patients Referred to Telehealth</a>
+        <a class="chart" href="/pctFiftyPerGeneralFollowUp">Patients Who Followed up</a>
+        <a class="chart" href="/patientEncounter">Patients who joined in a given year</a>
+        <a class="chart" href="/pctEligibleHealthCare">Patients Eligible for health care</a>
+        <a class="chart" href="/pctChronicCare">Patients with Chronic Care Information </a>
+    
     </body>
 </html>
