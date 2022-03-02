@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Patients = require('../Models/bloodPressure');
-router.get('/', (req, res) => Patients.findAll({attributes: ['TimePeriod', 'NumDom', 'TotalPercent', 'PatientAmountSpecific', 'PatientAmountTotal' ]})
+router.get('/', (req, res) => Patients.findAll({attributes: ['TimePeriod', 'NumDom', 'TotalPercent', 'PatientAmountSpecifc', 'PatientAmountTotal' ]})
 .then(patients => {
 res.render('bloodPressure.ejs', {patients:patients});
 })

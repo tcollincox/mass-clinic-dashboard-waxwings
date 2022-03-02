@@ -19,11 +19,21 @@ const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
-const bloodA1CRouter = require("./routes/bloodA1C.js"); //started new list here
+const bloodA1CRouter = require("./routes/bloodA1C.js");
 const pctFiftyPerGeneralFollowUp = require("./routes/pctFiftyPerGeneralFollowUp.js");
 const patientEncounter = require('./routes/patientEncounter.js');
 const pctEligibleHealthCare = require('./routes/pctEligibleHealthCare.js');
 const pctChronicCare = require('./routes/pctChronicCare.js');
+const bloodPressureRouter = require('./routes/bloodPressure.js');
+const cholesterolRouter = require('./routes/cholesterol.js');
+const noShowPatientRouter = require('./routes/noShowPatient.js');
+const patientEnrollYearRouter = require('./routes/patientEnrollYear.js');
+const twentyFivePerTelehealthReferredRouter = require('./routes/twentyFivePerTelehealthReferred.js');
+const providedScreeningRouter = require('./routes/providedScreening.js');
+const patientReferredToTelehealthRouter = require('./routes/patientReferredToTelehealth.js');
+const patientTypeServeRouter = require('./routes/patientTypeServe.js');
+const placeOfCareRouter = require('./routes/placeOfCare.js');
+const uniquePatientInYearRouter = require('./routes/uniquePatientInYear.js');
 
 var app = express();
 
@@ -58,6 +68,17 @@ app.use("/pctFiftyPerGeneralFollowUp", pctFiftyPerGeneralFollowUp);
 app.use("/patientEncounter", patientEncounter);
 app.use("/pctEligibleHealthCare", pctEligibleHealthCare);
 app.use("/pctChronicCare", pctChronicCare);
+app.use("/bloodPressure", bloodPressureRouter);
+app.use("/cholesterol",cholesterolRouter);
+app.use("/noShowPatient", noShowPatientRouter);
+app.use("/patientEnrollYear", patientEnrollYearRouter);
+app.use("/twentyFivePerTelehealthReferred", twentyFivePerTelehealthReferredRouter);
+app.use("/providedScreening", providedScreeningRouter);
+app.use("/patientReferredToTelehealth", patientReferredToTelehealthRouter);
+app.use("/patientTypeServe", patientTypeServeRouter);
+app.use("/placeOfCare", placeOfCareRouter);
+app.use("/uniquePatientInYear", uniquePatientInYearRouter);
+
 
 app.use(function(req, res, next) {
   next(createError(404));
