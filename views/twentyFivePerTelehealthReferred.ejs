@@ -52,7 +52,7 @@
         </div>
 
     <div class="content">
-    <h1 class="header"></h1>
+    <h1 class="header">Patients referred to Telehealth that will complete at least 1 follow-up visit as measured by patient records</h1>
     <table class="data_table" id="patients_table" >
         <tr>
             <th>TargetPercent</th>
@@ -74,5 +74,36 @@
             <option>All Years</option>
         </select>
     </div>
+
+    <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        //name of column you want data from
+        const chosenField = "Numerator"
+        //giving function table id
+        let dataArray = returnArrayFromTable("patients_table");
+        //gets array of values
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        //gets labels
+        let labelArray = makeLabelArray(dataArray, "RecordedYear", false);
+        //gets colors array - currently can only create array of one color
+        let colorArray = makeColorArray(dataArray);
+        //creates graph
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "RecordedYear", 'bar' )
+        //makes dropdown
+        let years = makeYearArray(dataArray, "RecordedYear");
+        addSelectYears(years);
+
+        //changing the value on the chart based on selection in the dropdown
+        document.getElementById('time-frame').addEventListener('change', function() {
+                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
+                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
+                let changedLabelArray = makeLabelArray(changedDataArray, "RecordedYear", false);
+                let changedColorArray = makeColorArray(changedDataArray);
+                globalChart.destroy();
+                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Numerator", 'bar');
+            });
+
+    </script>
+
 </body>
 </html>
