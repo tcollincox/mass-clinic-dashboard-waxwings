@@ -25,12 +25,12 @@
     <h1 id="something"></h1>
     <script src="javascript/array.js" type="text/javascript"></script>
     <script>
-        const chosenField = "PercentAmount"
-        let dataArray = returnArrayFromTable("patient_tablePA");
-        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
-        let labelArray = makeLabelArray(dataArray, "AmountOfTime", false);
-        let colorArray = ['rgb(66, 179, 229 )', 'rgb(45, 187, 204 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(26, 109, 185 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )'];
-        let globalChart = generateChartPartial(labelArray, valuesArray, colorArray, "How Accessible", 'pie', 'myChartPA');
+        const chosenFieldPA = "PercentAmount"
+        let dataArrayPA = returnArrayFromTable("patient_tablePA");
+        let valuesArrayPA = desiredArrayByYear("All Years", dataArrayPA, chosenFieldPA);
+        let labelArrayPA = makeLabelArray(dataArrayPA, "AmountOfTime", false);
+        let colorArrayPA = ['rgb(66, 179, 229 )', 'rgb(45, 187, 204 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(26, 109, 185 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )'];
+        let globalChartPA = generateChartPartial(labelArrayPA, valuesArrayPA, colorArrayPA, "How Accessible", 'pie', 'myChartPA');
     </script>
 </body>
 </html>
