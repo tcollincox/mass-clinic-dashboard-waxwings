@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Referrals to and from Mass clinic
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h1 class="header">Referrals To and From Mass Clinic</h1>
+        <table class="data_table" id="patient_tablePRMC" >
+            <tr>
+                <th>ToFrom</th>
+                <th>PatientAmount</th>
+                <th>RecordedYear</th>
+            </tr>
+            <% patients.forEach(function(o) { %>
+                <tr><td><%= o.ToFrom %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChartPRMC" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        const chosenFieldPRMC = "PatientAmount";
+        let dataArrayPRMC = returnArrayFromTable("patient_tablePRMC");
+        let yearsPRMC = makeYearArray(dataArrayPRMC, "RecordedYear");
+        let valuesArrayPRMC = desiredArrayByYear("All Years", dataArrayPRMC, chosenFieldPRMC);
+        let labelArrayPRMC = makeLabelArray(dataArrayPRMC, "ToFrom", true);
+        let colorArrayPRMC = makeMultipleColorArray( 2, false, yearsPRMC.length);
+        let globalChartPRMC = generateChartPartial(labelArrayPRMC, valuesArrayPRMC, colorArrayPRMC, "Number Of Patients", 'bar' , "myChartPRMC")
+    </script>
+        
+    </body>
+</html>
