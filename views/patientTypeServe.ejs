@@ -52,7 +52,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <div class="content">
-        <h1 class="header"></h1>
+        <h1 class="header">Type of Patients Served</h1>
         <table class="data_table" id="patient_table" >
             <tr>
                 <th>PatientAmount</th>
@@ -88,6 +88,9 @@
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
         //gets labels
         let labelArray = makeLabelArray(dataArray, "PatientType", false);
+        labelArray.forEach((label, index) => {
+                    labelArray[index] = label.charAt(0).toUpperCase() + label.slice(1);
+        })
         //gets colors array - currently can only create array of one color
         let colorArray = makeMultipleColorArray(3, false, years.length);
         //creates graph
@@ -99,6 +102,9 @@
                 let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
                 let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
                 let changedLabelArray = makeLabelArray(changedDataArray, "PatientType", false);
+                changedLabelArray.forEach((label, index) => {
+                    changedLabelArray[index] = label.charAt(0).toUpperCase() + label.slice(1);
+                })
                 if(this.value == "All Years"){
                     changedColorArray = makeMultipleColorArray(3, false, years.length);
                 }
