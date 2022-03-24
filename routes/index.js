@@ -18,6 +18,10 @@ const PlaceOfCare = require('../Models/placeOfCare');
 let placeOfCare = [];
 const UniquePatientInYear = require('../Models/uniquePatientInYear');
 let uniquePatientInYear = [];
+const PatientEncounter = require('../Models/patientEncounter');
+let patientEncounter = [];
+const PatientTypeServe = require('../Models/patientTypeServe');
+let patientTypeServe = [];
 
 router.get('/', async function(req, res){
     applications = await Applications.findAll({attributes: ['ApplicationType', 'PatientAmount', 'RecordedYear']})
@@ -29,17 +33,21 @@ router.get('/', async function(req, res){
     patientArrivalTime = await PatientArrivalTime.findAll({attributes: ['TimeArrived', 'PercentAmount', 'PatientAmount']});
     placeOfCare = await PlaceOfCare.findAll({attributes: ['AppttypeGroup', 'AppttypeSpecific', 'PatientEncounters', 'UniquePatients' ]});
     uniquePatientInYear = await UniquePatientInYear.findAll({attributes: ['AmountOfYears', 'PatientAmount']});
+    patientEncounter = await PatientEncounter.findAll({attributes: ['PatientAmount', 'RecordedYear', 'TargetNumber']});
+    patientTypeServe = await PatientTypeServe.findAll({attributes: ['PatientAmount', 'RecordedYear', 'PatientType']});
 
     res.render('index.ejs', {data : {
         applications:applications, 
         bloodA1C:bloodA1C,
         referralsMassClinic:referralsMassClinic,
-        patientFollowUp,patientFollowUp,
+        patientFollowUp:patientFollowUp,
         noShowPatient:noShowPatient, 
         patientAccessibility:patientAccessibility , 
         patientArrivalTime:patientArrivalTime,
         placeOfCare:placeOfCare, 
-        uniquePatientInYear:uniquePatientInYear
+        uniquePatientInYear:uniquePatientInYear,
+        patientEncounter: patientEncounter,
+        patientTypeServe: patientTypeServe
     }
     })});
 
