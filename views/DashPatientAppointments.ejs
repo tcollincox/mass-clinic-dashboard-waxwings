@@ -63,9 +63,12 @@
             <div class="chart"><%- include('Partials/noShowPatient', {patient:data.noShowPatient})%><a href="/noShowPatient">See More</a></div> 
             <div class="chart"><%- include('Partials/patientAccessibility', {patient:data.patientAccessibility})%><a href="/patientAccessibility">See More</a></div> 
             <div class="chart"><%- include('Partials/patientArrivalTime', {patientArrivalTimes:data.patientArrivalTime})%><a href="/patientArrivalTime">See More</a></div>
-            <!-- needs fixing <div class="chart"><a href="/patientEnrollYear">See More</a></div>   -->
-            <!-- <div class="chart"><a href="/placeOfCare">See More</a></div>  -->
             <div class="chart"><%- include('Partials/uniquePatientInYear', {patient:data.uniquePatientInYear})%><a href="/uniquePatientInYear">See More</a></div> 
+            
+            <div class="chart"><%- include('Partials/patientEnrollYear', {patient:data.patientEnrollYear})%><a href="/patientEnrollYear">See More</a></div>
+            
+            <div class="chart"><%- include('Partials/placeOfCare', {patient:data.placeOfCare})%><a href="/placeOfCare">See More</a></div>
+            
         </div>
 
     </body>

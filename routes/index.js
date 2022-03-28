@@ -1,5 +1,6 @@
 const express =  require("express");
 const router = express.Router();
+
 const Applications = require('../Models/applications');
 let applications = [];
 const BloodA1C = require('../Models/bloodA1C');
@@ -24,10 +25,10 @@ const PatientTypeServe = require('../Models/patientTypeServe');
 let patientTypeServe = [];
 
 router.get('/', async function(req, res){
-    applications = await Applications.findAll({attributes: ['ApplicationType', 'PatientAmount', 'RecordedYear']})
-    bloodA1C = await BloodA1C.findAll({attributes: ['TimePeriod', 'NumDom', 'TotalPercent', 'PatientAmountSpecifc', 'PatientAmountTotal' ]})
-    referralsMassClinic = await ReferralsMassClininc.findAll({attributes: ['ToFrom', 'PatientAmount', 'RecordedYear']})
-    patientFollowUp = await PatientFollowUp.findAll({attributes: ['PatientType', 'PatientAmount', 'RecordedYear']})
+    applications = await Applications.findAll({attributes: ['ApplicationType', 'PatientAmount', 'RecordedYear']});
+    bloodA1C = await BloodA1C.findAll({attributes: ['TimePeriod', 'NumDom', 'TotalPercent', 'PatientAmountSpecifc', 'PatientAmountTotal' ]});
+    referralsMassClinic = await ReferralsMassClininc.findAll({attributes: ['ToFrom', 'PatientAmount', 'RecordedYear']});
+    patientFollowUp = await PatientFollowUp.findAll({attributes: ['PatientType', 'PatientAmount', 'RecordedYear']});
     noShowPatient = await NoShowPatient.findAll({attributes: ['RecordedYear', 'PercentAmount' ]});
     patientAccessibility = await PatientAccessibility.findAll({attributes: ['AmountOfTime', 'PercentAmount', 'TotalAmount', 'SpecifcAmount']});
     patientArrivalTime = await PatientArrivalTime.findAll({attributes: ['TimeArrived', 'PercentAmount', 'PatientAmount']});

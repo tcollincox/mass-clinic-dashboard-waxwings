@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h2 class="header">Patient Demographics</h2>
+        <table class="data_table" id="patient_tableDEM" >
+            <tr>
+                <th>Demographic Type</th>
+                <th>Amount of Patients</th>
+                <th>Year</th>
+            </tr>
+            
+            <% demographics.forEach(function(o) { %>
+                <tr>
+                    <td><%= o.DemographicType %></td>
+                    <td><%= o.PatientAmount %></td>
+                    <td><%= o.RecordedYear %></td>
+                </tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChartDEM" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+        <script>
+
+        const chosenFieldDEM = "PatientAmount"
+        let dataArrayDEM = returnArrayFromTable("patient_tableDEM");
+        let yearsDEM = makeYearArray(dataArrayDEM, "RecordedYear");
+        let valuesArrayDEM = desiredArrayByYear("All Years", dataArrayDEM, chosenFieldDEM);
+        let labelArrayDEM = makeLabelArray(dataArrayDEM, "DemographicType", false);
+        let colorArrayDEM = makeMultipleColorArray(2, false, yearsDEM.length);
+        let globalChartDEM = generateChartPartial(labelArrayDEM, valuesArrayDEM, colorArrayDEM, "Number Of Patients", 'bar', "myChartDEM" );
+
+
+        </script>
+           
+    </body>
+</html>
+
+ 
