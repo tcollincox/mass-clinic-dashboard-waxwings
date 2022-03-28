@@ -62,8 +62,10 @@
         </div>
 
 
+
         <div class="chartSection">
-        <a class="chart" href="/demographics">Patient Demographics</a>   
+        <div class="chart"><%- include('Partials/demographics', {demographics:data.demographics})%><a href="/demographics">See More</a></div>
         </div>
+
     </body>
 </html>

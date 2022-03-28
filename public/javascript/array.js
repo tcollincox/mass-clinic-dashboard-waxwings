@@ -40,6 +40,26 @@ function desiredArrayByYear(year, dataArray, key){
     }
 }
 
+//given a desired year as a string ("All Years" for every year), your full data array of JSON objects, and the columnName you want an array of
+// this produces an array of all of the values that were in the chosen column
+function desiredArrayByYearWithYearName(year, dataArray, key, yearName){
+    let valueArray = [];
+    if(year == "All Years"){   
+        for(let i = 0; i<dataArray.length; i++){
+            valueArray.push(dataArray[i][key]);
+        }
+        return valueArray;
+    }
+    else{
+        for(let i = 0; i<dataArray.length ; i++){
+            if(dataArray[i][yearName] == year){
+                valueArray.push(dataArray[i][key]);
+            }
+        }
+        return valueArray;
+    }
+}
+
 //given your full data array of JSON objects, a string that is your desired lable for each bar, and a boolean choosing whether or not 
 //you want to add the year automatically to your label, this will return an array of labels
 function makeLabelArray(dataArray, desiredLabel, addYear, customLabel){
@@ -240,6 +260,31 @@ function generateChartPartial(labelArray, dataArray, colorOptions, chartLabel, c
                 }
             }
         }
+    };
+
+    var myChart = new Chart(
+        document.getElementById(chartId),
+        config
+    );
+
+    return myChart;
+}
+
+//given an array of labels, your full data array of JSON objects, an array of color options, a string that is the label of your chart, and a string that is 
+// your desired chart type this goes into the html document and adds a graph to your empty graph area.
+function generateChartGiveId(labelArray, dataArray, colorOptions, chartLabel, chartType, chartId){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data
     };
 
     var myChart = new Chart(

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h2 class="header">Patient Screenings</h2>
+        <table class="data_table" id="patient_tableSCREEN" >
+            <tr>
+                <th>Patient Amount</th>
+                <th>Recorded Year</th>
+            </tr>
+            <% patients.forEach(function(o) { %>
+                <tr><td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChartSCREEN" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+        <script>
+        const chosenFieldSCREEN = "PatientAmount"
+        let dataArraySCREEN = returnArrayFromTable("patient_tableSCREEN");
+        let yearsSCREEN = makeYearArray(dataArraySCREEN, "RecordedYear");
+        let valuesArraySCREEN = desiredArrayByYear("All Years", dataArraySCREEN, chosenFieldSCREEN);
+        let labelArraySCREEN = makeLabelArray(dataArraySCREEN, "PatientAmount", true, false);
+        let colorArraySCREEN = makeMultipleColorArray(2, false, yearsSCREEN.length );
+        let globalChartSCREEN = generateChartPartial(labelArraySCREEN, valuesArraySCREEN, colorArraySCREEN, "Number Of Patient Applications", 'bar', "myChartSCREEN" );
+
+        </script>
+           
+    </body>
+</html>
+
+ 

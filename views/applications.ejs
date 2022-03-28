@@ -80,6 +80,9 @@
         addSelectYears(years);
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
         let labelArray = makeLabelArray(dataArray, "ApplicationType", true, false);
+        labelArray.forEach((label, index) => {
+                    labelArray[index] = label.charAt(0).toUpperCase() + label.slice(1);
+        })
         let colorArray = makeMultipleColorArray(2,false, years.length );
         let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patient Applications", 'bar' );
 
@@ -87,6 +90,9 @@
                 let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
                 let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
                 let changedLabelArray = makeLabelArray(changedDataArray, "ApplicationType", true, false);
+                changedLabelArray.forEach((label, index) => {
+                    changedLabelArray[index] = label.charAt(0).toUpperCase() + label.slice(1);
+                })
                 if(this.value == "All Years"){
                     changedColorArray = makeMultipleColorArray( 2, false, years.length);
                 }

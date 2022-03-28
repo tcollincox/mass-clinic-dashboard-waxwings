@@ -24,6 +24,11 @@ table, td, th{
     height: 200px;
     width: 25%;
 }
+.canvas_container{
+    margin:0px auto ;
+    height: 200px;
+    width: 25%;
+}
 .data_table{
     visibility: collapse;
 }
