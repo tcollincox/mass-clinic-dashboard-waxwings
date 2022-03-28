@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h2 class="header">Patient Years at MASS Clinic</h2>
+        <table class="data_table" id="patient_tableROLL" >
+            <tr>
+                <th>YearEnrolled</th>
+                <th>YearLeft</th>
+                <th>PatientAmount</th>
+            </tr>
+            <% patient.forEach(function(o) { %>
+                <tr><td><%= o.YearEnrolled %></td><td><%= o.YearLeft %></td><td><%= o.PatientAmount %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChartROLL" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+        <script>
+        const chosenFieldROLL = "PatientAmount";
+        let dataArrayROLL = returnArrayFromTable("patient_tableROLL");
+        let yearsROLL = makeYearArray(dataArrayROLL, "YearEnrolled");
+        let valuesArrayROLL = desiredArrayByYear("All Years", dataArrayROLL, chosenFieldROLL);
+        let labelArrayROLL = makeLabelArray(dataArrayROLL, "YearLeft", false);
+        let colorArrayROLL = makeMultipleColorArray(2, false, yearsROLL.length );
+        let globalChartROLL = generateChartPartial(labelArrayROLL, valuesArrayROLL, colorArrayROLL, "Number Of Patient Years", 'bar', "myChartROLL");
+
+        </script>
+           
+    </body>
+</html>
+
+ 

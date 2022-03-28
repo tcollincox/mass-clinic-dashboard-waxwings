@@ -6,8 +6,10 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <h1 class="header">Applications to Various Programs</h1>
         <table class="data_table" id="patient_tableAPP">
+        
             <tr>
                 <th>ApplicationType</th>
                 <th>PatientAmount</th>
@@ -29,6 +31,7 @@
         let labelArrayAPP = makeLabelArray(dataArrayAPP, "ApplicationType", true, false);
         let colorArrayAPP = makeMultipleColorArray(2,false, yearsAPP.length );
         let globalChartAPP = generateChartPartial(labelArrayAPP, valuesArrayAPP, colorArrayAPP, "Number Of Patient Applications", 'bar', 'myChartAPP' );
+
 
         </script>
            

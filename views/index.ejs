@@ -11,9 +11,9 @@
         <div class="top">
 
             <img src="http://massclinic.org/wp-content/uploads/mass_logo_georgia-150x150-1.png" alt="MASS Clinic Logo" width= "150px" height="150px"/>
-
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+            
             <h1 class="top-page">Mass Clinic Dashboard</h1>
-
 
             <div class="dropdown-container">
                 <input type="checkbox" name="" id="" class="dropdown-btn">
@@ -60,6 +60,7 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
+
         <div class="chartSection">
             <div class="chart"><%- include('Partials/patientReferredMassClinic', {patients:data.referralsMassClinic})%><a href="/patientReferredMassClinic">See More</a></div>
             <!-- <a class="chart" href="/demographics">Demographics</a>
@@ -77,6 +78,8 @@
             <a class="chart" href="/patientEncounter">Patients who joined in a given year</a>
             <a class="chart" href="/pctEligibleHealthCare">Patients Eligible for health care</a>
             <a class="chart" href="/pctChronicCare">Patients with Chronic Care Information </a> -->
-        </div>
+        <div class="chart"><%- include('Partials/patientEncounter', {patient:data.patientEncounter})%><a href="/patientEncounter">See More</a></div>   
+        <div class="chart"><%- include('Partials/patientTypeServe', {patient:data.patientTypeServe})%><a href="/patientTypeServe">See More</a></div>
+      </div>
     </body>
 </html>
