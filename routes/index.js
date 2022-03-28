@@ -18,6 +18,8 @@ const PlaceOfCare = require('../Models/placeOfCare');
 let placeOfCare = [];
 const UniquePatientInYear = require('../Models/uniquePatientInYear');
 let uniquePatientInYear = [];
+const PatientReferredTelehealth = require('../Models/patientReferredToTelehealth');
+let patientReferredTelehealth = [];
 
 router.get('/', async function(req, res){
     applications = await Applications.findAll({attributes: ['ApplicationType', 'PatientAmount', 'RecordedYear']})
@@ -28,7 +30,8 @@ router.get('/', async function(req, res){
     patientAccessibility = await PatientAccessibility.findAll({attributes: ['AmountOfTime', 'PercentAmount', 'TotalAmount', 'SpecifcAmount']});
     patientArrivalTime = await PatientArrivalTime.findAll({attributes: ['TimeArrived', 'PercentAmount', 'PatientAmount']});
     placeOfCare = await PlaceOfCare.findAll({attributes: ['AppttypeGroup', 'AppttypeSpecific', 'PatientEncounters', 'UniquePatients' ]});
-    uniquePatientInYear = await UniquePatientInYear.findAll({attributes: ['AmountOfYears', 'PatientAmount']});
+    // uniquePatientInYear = await UniquePatientInYear.findAll({attributes: ['AmountOfYears', 'PatientAmount']});
+    patientReferredTelehealth = await PatientReferredTelehealth.findAll({attributes:['PatientType','RecordedYear','PatientAmount']});
 
     res.render('index.ejs', {data : {
         applications:applications, 
@@ -39,7 +42,7 @@ router.get('/', async function(req, res){
         patientAccessibility:patientAccessibility , 
         patientArrivalTime:patientArrivalTime,
         placeOfCare:placeOfCare, 
-        uniquePatientInYear:uniquePatientInYear
+        patientReferredTelehealth: patientReferredTelehealth
     }
     })});
 
