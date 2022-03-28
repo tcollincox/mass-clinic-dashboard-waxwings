@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <title>Patient Encounters</title>
     <link type="text/css" href="css/style.css" rel="stylesheet">
+    <title>HbA1c Testing 2019</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <input type="checkbox" name="" class="tab-btn"/>
+        <input type="checkbox" name="" class="tab-btn"/>
 
         <div class="dropdown-container">
             <input type="checkbox" name="" id="" class="dropdown-btn">
@@ -50,47 +49,39 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-    
-    <div class="content">
-    <h1 class="header">Patients Encountered in a Given Year</h1>
-    <table class="data_table" id="patient_table" >
-        <tr>
-            <th>PatientAmount</th>
-            <th>RecordedYear</th>
-            <th>TargetNumber</th>
-        </tr>
-        <% patient.forEach(function(o) { %>
-            <tr><td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td><td><%= o.TargetNumber %></td></tr>
-        <% }); %>
-    </table>
-    <div id="canvas_container">
-        <canvas id="myChart" width="200" height="200"></canvas>
-    </div>
-    <div class="new-line">
-        <label>Select Recored Year</label>
-        <select id="time-frame" name="time-frame">
-            <option>All Years</option>
-        </select>
-    </div>
-    <script src="javascript/array.js" type="text/javascript"></script>
-    <script>
-        const chosenField = "PatientAmount"
-        let dataArray = returnArrayFromTable("patient_table");
-        let years = makeYearArray(dataArray, "RecordedYear");
-        addSelectYears(years);
-        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
-        let labelArray = makeLabelArray(dataArray, "RecordedYear", false, false);
-        let colorArray = makeColorArray(dataArray);
-        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Number Of Patients", 'bar' );
 
-        document.getElementById('time-frame').addEventListener('change', function() {
-                let changedDataArray = dataArrayByYear(dataArray, this.value, "RecordedYear");
-                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
-                let changedLabelArray = makeLabelArray(changedDataArray, "RecordedYear", false, false);
-                let changedColorArray = makeColorArray(changedDataArray);
-                globalChart.destroy();
-                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "Number Of Patients", 'bar');
-            });
+        
+        <div class="content">
+        <h1 class="header">HbA1c Testing 2019</h1>
+        <table class="data_table" id="patients_table" >
+            <tr>
+                <th>PatientAmount</th>
+                <th>LevelOfControl</th>
+            </tr>
+            <% patients.forEach(function(o) { %>
+                <tr><td><%= o.PatientAmount %></td><td><%= o.LevelOfControl %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChart" width="200" height="200"></canvas>
+        </div>
+
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        //name of column you want data from
+        const chosenField = "PatientAmount"
+        //giving function table id
+        let dataArray = returnArrayFromTable("patients_table");
+        console.log(dataArray);
+        //gets array of values
+        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        //gets labels
+        let labelArray = makeLabelArray(dataArray, "LevelOfControl", false);
+        //gets colors array - currently can only create array of one color
+        let colorArray = makeMultipleColorArray(4, false, 1);
+        //creates graph
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmount", 'bar' );
+
     </script>
 </body>
 </html>

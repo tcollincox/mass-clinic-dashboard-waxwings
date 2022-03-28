@@ -21,7 +21,7 @@
                 <div class="dropdown-list">
                      
                     <a href="/applications">Applications</a> 
-                    <a href="/bloodA1C">Blood A1C</a> 
+                    <a href="/hbA1c">Blood A1C</a> 
                     <a href="/bloodPressure">Blood Pressure</a>   
                     <a href="/cholesterol">Cholesterol</a> 
                     <a href="/demographics">Demographics</a> 
@@ -63,15 +63,10 @@
         </div>
 
         <div class="chartSection">
-          <a class="chart" href="/bloodA1C">Blood A1C</a>
-          <a class="chart" href="/bloodPressure">Blood Pressure</a>
-          <a class="chart" href="/cholesterol">Cholesterol</a>
-          <a class="chart" href="/pctChronicCare ">Patient Chronic Care</a>
-          <a class="chart" href="/pctEligibleHealthCare ">Eligible for Health Care Coverage</a>
-          <a class="chart" href="/pctFiftyPerGeneralFollowUp">Patients that Returned for Follow-up</a>
-          <a class="chart" href="/pctPrescriptApp">Eligible for Prescription Assistance</a>
-          <a class="chart" href="/pctTwentyPerReferral">Eligible for Prescription Assistance</a>
-          <a class="chart" href="/twentyFivePerTelehealthReferred">Patients Referred to Telehealth with Follow-up</a>
+          <div class="chart"><%- include('Partials/hbA1C', {patients:data.hbA1c})%><a href="/hbA1C">See More</a></div>
+          <div class="chart"><%- include('Partials/bloodPressure', {patients:data.bloodPressure})%><a href="/bloodPressure">See More</a></div>
+          <div class="chart"><%- include('Partials/cholesterol', {patients:data.cholesterol})%><a href="/cholesterol">See More</a></div>
+          <div class="chart"><%- include('Partials/diabetesBloodPressure', {patients:data.diabetesBloodPressure})%><a href="/diabetesBloodPressure">See More</a></div>
         </div>
     </body>
 </html>

@@ -19,7 +19,7 @@
                 <div class="dropdown-list">
                      
                     <a href="/applications">Applications</a> 
-                    <a href="/bloodA1C">Blood A1C</a> 
+                    <a href="/hbA1c">Blood A1C</a> 
                     <a href="/bloodPressure">Blood Pressure</a>   
                     <a href="/cholesterol">Cholesterol</a> 
                     <a href="/demographics">Demographics</a> 
@@ -63,12 +63,8 @@
             <div class="chart"><%- include('Partials/noShowPatient', {patient:data.noShowPatient})%><a href="/noShowPatient">See More</a></div> 
             <div class="chart"><%- include('Partials/patientAccessibility', {patient:data.patientAccessibility})%><a href="/patientAccessibility">See More</a></div> 
             <div class="chart"><%- include('Partials/patientArrivalTime', {patientArrivalTimes:data.patientArrivalTime})%><a href="/patientArrivalTime">See More</a></div>
-            <div class="chart"><%- include('Partials/uniquePatientInYear', {patient:data.uniquePatientInYear})%><a href="/uniquePatientInYear">See More</a></div> 
-            
-            <div class="chart"><%- include('Partials/patientEnrollYear', {patient:data.patientEnrollYear})%><a href="/patientEnrollYear">See More</a></div>
-            
             <div class="chart"><%- include('Partials/placeOfCare', {patient:data.placeOfCare})%><a href="/placeOfCare">See More</a></div>
-            
+            <div class="chart"><%- include('Partials/patientRetention', {patient:data.patientRetention})%><a href="/patientRetention">See More</a></div>
         </div>
 
     </body>

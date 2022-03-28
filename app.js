@@ -19,12 +19,12 @@ const patientArrivalTimes = require("./routes/patientArrivalTime.js");
 const patientAccessibility = require("./routes/patientAccessibility.js");
 const pctTwentyPerReferral = require("./routes/pctTwentyPerReferral.js");
 const pctPrescriptApp = require("./routes/pctPrescriptApp.js");
-const bloodA1CRouter = require("./routes/bloodA1C.js");
+const hbA1CRouter = require("./routes/hbA1C.js");
 const pctFiftyPerGeneralFollowUp = require("./routes/pctFiftyPerGeneralFollowUp.js");
 const patientEncounter = require('./routes/patientEncounter.js');
 const pctEligibleHealthCare = require('./routes/pctEligibleHealthCare.js');
 const pctChronicCare = require('./routes/pctChronicCare.js');
-const bloodPressureRouter = require('./routes/bloodPressure.js');
+const bloodPressure = require('./routes/bloodPressure.js');
 const cholesterolRouter = require('./routes/cholesterol.js');
 const noShowPatientRouter = require('./routes/noShowPatient.js');
 const patientEnrollYearRouter = require('./routes/patientEnrollYear.js');
@@ -34,6 +34,8 @@ const patientReferredToTelehealthRouter = require('./routes/patientReferredToTel
 const patientTypeServeRouter = require('./routes/patientTypeServe.js');
 const placeOfCareRouter = require('./routes/placeOfCare.js');
 const uniquePatientInYearRouter = require('./routes/uniquePatientInYear.js');
+const patientRetention = require('./routes/patientRetention.js');
+const diabetesBloodPressure = require('./routes/diabetesBloodPressure.js');
 
 var app = express();
 
@@ -63,12 +65,12 @@ app.use("/patientArrivalTime", patientArrivalTimes);
 app.use("/patientAccessibility", patientAccessibility);
 app.use("/pctTwentyPerReferral", pctTwentyPerReferral);
 app.use("/pctPrescriptApp", pctPrescriptApp);
-app.use("/bloodA1C", bloodA1CRouter);
+app.use("/hbA1C", hbA1CRouter);
 app.use("/pctFiftyPerGeneralFollowUp", pctFiftyPerGeneralFollowUp);
 app.use("/patientEncounter", patientEncounter);
 app.use("/pctEligibleHealthCare", pctEligibleHealthCare);
 app.use("/pctChronicCare", pctChronicCare);
-app.use("/bloodPressure", bloodPressureRouter);
+app.use("/bloodPressure", bloodPressure);
 app.use("/cholesterol",cholesterolRouter);
 app.use("/noShowPatient", noShowPatientRouter);
 app.use("/patientEnrollYear", patientEnrollYearRouter);
@@ -78,6 +80,8 @@ app.use("/patientReferredToTelehealth", patientReferredToTelehealthRouter);
 app.use("/patientTypeServe", patientTypeServeRouter);
 app.use("/placeOfCare", placeOfCareRouter);
 app.use("/uniquePatientInYear", uniquePatientInYearRouter);
+app.use("/patientRetention", patientRetention);
+app.use("/diabetesBloodPressure", diabetesBloodPressure);
 
 
 app.use(function(req, res, next) {

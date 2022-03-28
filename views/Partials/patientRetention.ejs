@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    <title>Amount of Years Patients Stay</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <div class="content">
+        <h1 class="header">Amount of Years Patients Stay</h1>
+        <table class="data_table" id="patient_tablePR" >
+            <tr>
+                <th>AmountOfYears</th>
+                <th>PatientAmount</th>
+            </tr>
+            <% patient.forEach(function(o) { %>
+                <tr><td><%= o.AmountOfYears %></td><td><%= o.PatientAmount %></td></tr>
+            <% }); %>
+        </table>
+        <div class="canvas_container">
+            <canvas id="myChartPR"></canvas>
+        </div>
+
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        
+        //name of column you want data from
+        const chosenFieldPR = "PatientAmount"
+        //giving function table id
+        let dataArrayPR = returnArrayFromTable("patient_tablePR");
+        //gets array of values
+        let valuesArrayPR = desiredArrayByYear("All Years", dataArrayPR, chosenFieldPR);
+        //gets labels
+        let labelArrayPR = makeLabelArray(dataArrayPR, "AmountOfYears", false);
+        //gets colors array - currently can only create array of one color
+        let colorArrayPR = makeMultipleColorArray(1, false, 1);
+        //creates graph
+        let globalChartPR = generateChartPartial(labelArrayPR, valuesArrayPR, colorArrayPR, "PatientAmount", 'line', "myChartPR" )
+        //makes dropdown
+       
+    </script>
+
+</body>
+</html>

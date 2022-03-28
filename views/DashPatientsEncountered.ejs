@@ -21,7 +21,7 @@
                 <div class="dropdown-list">
                      
                     <a href="/applications">Applications</a> 
-                    <a href="/bloodA1C">Blood A1C</a> 
+                    <a href="/hbA1c">Blood A1C</a> 
                     <a href="/bloodPressure">Blood Pressure</a>   
                     <a href="/cholesterol">Cholesterol</a> 
                     <a href="/demographics">Demographics</a> 
@@ -69,7 +69,7 @@
           <div class="chart"><%- include('Partials/patientReferredMassClinic', {patients:data.referralsMassClinic})%><a href="/patientReferredMassClinic">See More</a></div>
           <div class="chart"><%- include('Partials/patientReferredToTelehealth', {patient:data.referralsToTelehealth})%><a href="/patientReferredToTelehealth">See More</a></div>
           <div class="chart"><%- include('Partials/patientTypeServe', {patient:data.patientTypeServe})%><a href="/patientTypeServe">See More</a></div>
-
+          <div class="chart"><%- include('Partials/patientRetention', {patient:data.patientRetention})%><a href="/patientRetention">See More</a></div>
           <!--view code for these three needs to be updated to the pattern of code-->
           <!-- <div class="chart"><%- include('Partials/providedScreening', {patients:data.providedScreening})%><a href="/providedScreening">See More</a></div>
           <div class="chart"><%- include('Partials/volunteers', {volunteers:data.volunteers})%><a href="/volunteers">See More</a></div>
