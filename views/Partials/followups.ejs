@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <h2 class="header">Patient Follow Up Appointments</h2>
+        <table class="data_table" id="patient_tableFOL" >
+            <tr>
+                <th>Type of Patient</th>
+                <th>Amount of People referred</th>
+                <th>Year</th>
+            </tr>
+            <% followups.forEach(function(o) { %>
+                <tr><td><%= o.PatientType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
+            <% }); %>
+        </table>
+        <div id="canvas_container">
+            <canvas id="myChartFOL" width="200" height="200"></canvas>
+        </div>
+        <script src="javascript/array.js" type="text/javascript"></script>
+        <script>
+            
+        const chosenFieldFOL = "PatientAmount"
+        let dataArrayFOL = returnArrayFromTable("patient_tableFOL");
+        let yearsFOL = makeYearArray(dataArrayFOL, "RecordedYear");
+        let valuesArrayFOL = desiredArrayByYear("All Years", dataArrayFOL, chosenFieldFOL);
+        let labelArrayFOL = makeLabelArray(dataArrayFOL, "PatientType", true);
+        let colorArrayFOL = makeMultipleColorArray(3, false, yearsFOL.length );
+        let globalChartFOL = generateChartPartial(labelArrayFOL, valuesArrayFOL, colorArrayFOL, "Number Of Followup Appointments", 'bar', "myChartFOL" );
+
+        </script>
+           
+    </body>
+</html>
+
+ 
