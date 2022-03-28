@@ -6,8 +6,10 @@
     </head>
     <body>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <h2 class="header">Applications to Various Programs</h2>
-        <table class="data_table" id="patient_tableAPP" >
+
+        <h1 class="header">Applications to Various Programs</h1>
+        <table class="data_table" id="patient_tableAPP">
+        
             <tr>
                 <th>ApplicationType</th>
                 <th>PatientAmount</th>
@@ -17,8 +19,8 @@
                 <tr><td><%= o.ApplicationType %></td> <td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
-        <div id="canvas_container">
-            <canvas id="myChartAPP" width="200" height="200"></canvas>
+        <div class="canvas_container">
+            <canvas id="myChartAPP" ></canvas>
         </div>
         <script src="javascript/array.js" type="text/javascript"></script>
         <script>
@@ -27,8 +29,9 @@
         let yearsAPP = makeYearArray(dataArrayAPP, "RecordedYear");
         let valuesArrayAPP = desiredArrayByYear("All Years", dataArrayAPP, chosenFieldAPP);
         let labelArrayAPP = makeLabelArray(dataArrayAPP, "ApplicationType", true, false);
-        let colorArrayAPP = makeMultipleColorArray(2, false, yearsAPP.length );
-        let globalChartAPP = generateChartPartial(labelArrayAPP, valuesArrayAPP, colorArrayAPP, "Number Of Patient Applications", 'bar', "myChartAPP" );
+        let colorArrayAPP = makeMultipleColorArray(2,false, yearsAPP.length );
+        let globalChartAPP = generateChartPartial(labelArrayAPP, valuesArrayAPP, colorArrayAPP, "Number Of Patient Applications", 'bar', 'myChartAPP' );
+
 
         </script>
            

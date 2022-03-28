@@ -61,18 +61,20 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-        
 
-        <div class="chart"><%- include('Partials/applications', {patient:data.applications})%><a href="/applications">See More</a></div> 
-        <div class="chart"><%- include('Partials/patientEncounter', {patient:data.patientEncounter})%><a href="/patientEncounter">See More</a></div>  
-        <div class="chart"><%- include('Partials/patientReferredMassClinic', {patients:data.referralsMassClinic})%><a href="/patientReferredMassClinic">See More</a></div>
-        <div class="chart"><%- include('Partials/patientReferredToTelehealth', {patient:data.referralsToTelehealth})%><a href="/patientReferredToTelehealth">See More</a></div>
-        <div class="chart"><%- include('Partials/patientTypeServe', {patient:data.patientTypeServe})%><a href="/patientTypeServe">See More</a></div>
-        
-        <!--view code for these three needs to be updated to the pattern of code-->
-        <div class="chart"><%- include('Partials/providedScreening', {patients:data.providedScreening})%><a href="/providedScreening">See More</a></div>
-        <div class="chart"><%- include('Partials/volunteers', {volunteers:data.volunteers})%><a href="/volunteers">See More</a></div>
-        <div class="chart"><%- include('Partials/followups', {followups:data.followups})%><a href="/followups">See More</a></div>
+
+        <div class="chartSection">
+          <div class="chart"><%- include('Partials/applications', {patient:data.applications})%><a href="/applications">See More</a></div> 
+          <div class="chart"><%- include('Partials/patientEncounter', {patient:data.patientEncounter})%><a href="/patientEncounter">See More</a></div>  
+          <div class="chart"><%- include('Partials/patientReferredMassClinic', {patients:data.referralsMassClinic})%><a href="/patientReferredMassClinic">See More</a></div>
+          <div class="chart"><%- include('Partials/patientReferredToTelehealth', {patient:data.referralsToTelehealth})%><a href="/patientReferredToTelehealth">See More</a></div>
+          <div class="chart"><%- include('Partials/patientTypeServe', {patient:data.patientTypeServe})%><a href="/patientTypeServe">See More</a></div>
+
+          <!--view code for these three needs to be updated to the pattern of code-->
+          <div class="chart"><%- include('Partials/providedScreening', {patients:data.providedScreening})%><a href="/providedScreening">See More</a></div>
+          <div class="chart"><%- include('Partials/volunteers', {volunteers:data.volunteers})%><a href="/volunteers">See More</a></div>
+          <div class="chart"><%- include('Partials/followups', {followups:data.followups})%><a href="/followups">See More</a></div>
+        </div>
         
     </body>
 </html>

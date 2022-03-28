@@ -1,20 +1,10 @@
-*{
+
+.canvas_container{
+    margin: 40px auto;
+}
+.canvas_container_pie{
+    margin-top: 30px;
     margin: auto;
-    padding: auto;
-}
-h2{
-    width:auto;
-    text-align: center;
-    display:block;
-    color: #42B3E5;
-    font-size: medium;
-}
-table{
-    border-collapse: collapse;
-}
-#canvas_container{
-    height: 70%;
-}
-.data_table{
-    visibility: collapse;
+    height: 150px;
+    width: 150px;
 }

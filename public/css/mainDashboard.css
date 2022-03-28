@@ -28,21 +28,28 @@ h4{
 }
 
 
-
-/*Main Body cards*/
-.chart-section{
-    margin-top: 5px;
+table{
+    display: none;
+}
+.chartSection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .chart{
-    display: inline-block;
-    margin: 2px 5px;
-    width:30%;
-    height: 350px;
-    font-size: large;
-    border: 2px solid #bbb;
-    border-radius: 5px;
     text-align: center;
-    color: #42B3E5;
+    margin:10px 10px;
+    border: 2px rgb(180, 180, 180) solid;
+    height: 400px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    border-radius: 7px;
+}
+
+.chart h1{
+    font-size:x-large;
 }
 .chart:hover{
     color: black;
@@ -53,6 +60,9 @@ h4{
     transition: all .4s ease;
 }
 
+.chart a{
+    font-size: medium;
+}
 
 /*Navigation Bar with Tabs*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -136,8 +146,6 @@ h4{
        text-align: center;
     }
 }
-
-
 
 
 /*Complete Options Dropdown*/

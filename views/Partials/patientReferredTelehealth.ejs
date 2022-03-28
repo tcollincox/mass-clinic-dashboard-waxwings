@@ -3,40 +3,41 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
-    <title>Patient Medical Home</title>
+    <title>Patient Referred To Telehealth</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <h2 class="header">Unique Patients in a year</h2>
-        <table class="data_table" id="patient_tableUP" >
+        <div class="content">
+        <h1 class="header">Patients Referred to Telehealth</h1>
+        <table class="data_table" id="patient_tableprt" >
             <tr>
-                <th>AmountOfYears</th>
+                <th>PatientType</th>
                 <th>PatientAmount</th>
+                <th>RecordedYear</th>
             </tr>
             <% patient.forEach(function(o) { %>
-                <tr><td><%= o.AmountOfYears %></td><td><%= o.PatientAmount %></td></tr>
+                <tr><td><%= o.PatientType %></td><td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
         <div class="canvas_container">
-            <canvas id="myChartUP" ></canvas>
+            <canvas id="myChartprt"></canvas>
         </div>
         <script src="javascript/array.js" type="text/javascript"></script>
     <script>
         //name of column you want data from
-        const chosenFieldUP = "PatientAmount"
+        const chosenFieldprt = "PatientAmount"
         //giving function table id
-        let dataArrayUP = returnArrayFromTable("patient_tableUP");
+        let dataArrayprt = returnArrayFromTable("patient_tableprt");
         //gets array of values
-        let valuesArrayUP = desiredArrayByYear("All Years", dataArrayUP, chosenFieldUP);
+        let valuesArrayprt = desiredArrayByYear("All Years", dataArrayprt, chosenFieldprt);
         //gets labels
-        let labelArrayUP = makeLabelArray(dataArrayUP, "AmountOfYears", false);
+        let labelArrayprt = makeLabelArray(dataArrayprt, "PatientType", false);
         //gets colors array - currently can only create array of one color
-        let colorArrayUP = makeColorArray(dataArrayUP);
+        let colorArrayprt = makeColorArray(dataArrayprt);
         //creates graph
-        let globalChartUP = generateChartPartial(labelArrayUP, valuesArrayUP, colorArrayUP, "PatientAmount", 'bar', "myChartUP")
+        let globalChartprt = generateChartPartial(labelArrayprt, valuesArrayprt, colorArrayprt, "PatientAmount", 'bar','myChartprt' )
         //makes dropdown
-        
-
     </script>
+
 </body>
 </html>

@@ -22,17 +22,17 @@
             <tr><td><%= o.TargetPercent %></td><td><%= o.PercentAchived %></td><td><%= o.RecordedYear %></td><td><%= o.Numerator %></td><td><%= o.Denominator %></td></tr>
         <% }); %>
     </table>
-    <div id="canvas_container">
-        <canvas id="myChart" width="200" height="200"></canvas>
+    <div class="canvas_container">
+        <canvas id="myChartEHC" ></canvas>
     </div>
     <script src="javascript/array.js" type="text/javascript"></script>
     <script>
-        const chosenField = "Numerator"
-        let dataArray = returnArrayFromTable("patient_table");
-        let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
-        let labelArray = makeLabelArray(dataArray, "RecordedYear", false);
-        let colorArray = makeColorArray(dataArray);
-        let globalChart = generateChart(labelArray, valuesArray, colorArray, "Percent Achived", 'bar' );
+        const chosenFieldEHC = "Numerator"
+        let dataArrayEHC = returnArrayFromTable("patient_tableEHC");
+        let valuesArrayEHC = desiredArrayByYear("All Years", dataArrayEHC, chosenFieldEHC);
+        let labelArrayEHC = makeLabelArray(dataArrayEHC, "RecordedYear", false);
+        let colorArrayEHC = makeColorArray(dataArrayEHC);
+        let globalChartEHC = generateChartPartial(labelArray, valuesArray, colorArray, "Percent Achived", 'bar', 'patient_tableEHC' );
     </script>
 </body>
 </html>
