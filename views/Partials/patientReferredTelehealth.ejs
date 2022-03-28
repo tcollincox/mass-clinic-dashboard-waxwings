@@ -19,8 +19,8 @@
                 <tr><td><%= o.PatientType %></td><td><%= o.PatientAmount %></td><td><%= o.RecordedYear %></td></tr>
             <% }); %>
         </table>
-        <div id="canvas_containerprt">
-            <canvas id="myChartprt" width="200" height="200"></canvas>
+        <div class="canvas_container">
+            <canvas id="myChartprt"></canvas>
         </div>
         <script src="javascript/array.js" type="text/javascript"></script>
     <script>
@@ -33,7 +33,7 @@
         //gets labels
         let labelArrayprt = makeLabelArray(dataArrayprt, "PatientType", false);
         //gets colors array - currently can only create array of one color
-        let colorArrayprt = makeColorArray(dataArray);
+        let colorArrayprt = makeColorArray(dataArrayprt);
         //creates graph
         let globalChartprt = generateChartPartial(labelArrayprt, valuesArrayprt, colorArrayprt, "PatientAmount", 'bar','myChartprt' )
         //makes dropdown
