@@ -60,10 +60,8 @@
                 <li><a href="/DashPatientAppointments">Patient Appointments</a></li>
             </ol>
         </div>
-
-
-
-        <a class="chart" href="/demographics">Patient Demographics</a>   
+ 
+        <div class="chart"><%- include('Partials/demographics', {demographics:data.demographics})%><a href="/demographics">See More</a></div>
         
     </body>
 </html>
