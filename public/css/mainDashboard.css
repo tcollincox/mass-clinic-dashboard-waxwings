@@ -41,7 +41,7 @@ table{
     margin:10px 10px;
     border: 2px rgb(180, 180, 180) solid;
     height: 400px;
-    width: 350px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-content: space-around;

@@ -66,12 +66,7 @@
         <div id="canvas_container">
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
-        <div class="new-line">
-            <label>Select Recored Year</label>
-            <select id="time-frame" name="time-frame">
-                <option>All Years</option>
-            </select>
-        </div>
+        
 
         <script src="javascript/array.js" type="text/javascript"></script>
     <script>
@@ -89,7 +84,6 @@
         let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmountSpecifc", 'bar' )
         //makes dropdown
         let years = makeYearArray(dataArray, "AppttypeGroup");
-        addSelectYears(years);
 
         //changing the value on the chart based on selection in the dropdown
         document.getElementById('time-frame').addEventListener('change', function() {
