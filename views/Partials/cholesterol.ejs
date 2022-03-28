@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link type="text/css" href="css/partialGraph.css" rel="stylesheet">
+    <title>Cholesterol Testing 2019</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <div class="content">
+        <h1 class="header">Cholesterol Testing 2019</h1>
+        <table class="data_table" id="patients_tableCT" >
+            <tr>
+                <th>PatientAmount</th>
+                <th>LevelOfControl</th>
+            </tr>
+            <% patients.forEach(function(o) { %>
+                <tr><td><%= o.PatientAmount %></td><td><%= o.LevelOfControl %></td></tr>
+            <% }); %>
+        </table>
+        <div class="canvas_container">
+            <canvas id="myChartCT"></canvas>
+        </div>
+
+        <script src="javascript/array.js" type="text/javascript"></script>
+    <script>
+        //name of column you want data from
+        const chosenFieldCT = "PatientAmount"
+        //giving function table id
+        let dataArrayCT = returnArrayFromTable("patients_tableCT");
+        //gets array of values
+        let valuesArrayCT = desiredArrayByYear("All Years", dataArrayCT, chosenFieldCT);
+        //gets labels
+        let labelArrayCT = makeLabelArray(dataArrayCT, "LevelOfControl", false);
+        //gets colors array - currently can only create array of one color
+        let colorArrayCT = makeMultipleColorArray(2, false, 1);
+        //creates graph
+        let globalChartCT = generateChartPartial(labelArrayCT, valuesArrayCT, colorArrayCT, "PatientAmount", 'bar', "myChartCT" );
+
+    </script>
+     </div>
+</body>
+</html>

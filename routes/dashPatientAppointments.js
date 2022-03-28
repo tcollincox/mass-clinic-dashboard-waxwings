@@ -12,6 +12,8 @@ const UniquePatientInYear = require('../Models/uniquePatientInYear');
 let uniquePatientInYear = [];
 const PatientEnrollYear = require('../Models/patientEnrollYear');
 let patientEnrollYear = [];
+const PatientRetention = require('../Models/patientRetention');
+let patientRetention = [];
 
 router.get('/', async function(req, res){
     
@@ -21,6 +23,7 @@ router.get('/', async function(req, res){
     placeOfCare = await PlaceOfCare.findAll({attributes: ['AppttypeGroup', 'AppttypeSpecific', 'PatientEncounters', 'UniquePatients' ]});
     uniquePatientInYear = await UniquePatientInYear.findAll({attributes: ['AmountOfYears', 'PatientAmount']});
     patientEnrollYear = await PatientEnrollYear.findAll({attributes: ['YearEnrolled', 'YearLeft', 'PatientAmount' ]});
+    patientRetention = await PatientRetention.findAll({attributes: ['AmountOfYears', 'PatientAmount']});
     
     res.render('DashPatientAppointments.ejs', {data :{
         noShowPatient:noShowPatient, 
@@ -29,6 +32,7 @@ router.get('/', async function(req, res){
         placeOfCare:placeOfCare, 
         uniquePatientInYear:uniquePatientInYear,
         patientEnrollYear: patientEnrollYear,
+        patientRetention:patientRetention
         
     }
 })});

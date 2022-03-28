@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link type="text/css" href="css/style.css" rel="stylesheet">
-    <title>Blood Pressure</title>
+    <title>Blood Pressure Testing 2019</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -14,7 +14,7 @@
             <div class="dropdown-list">
                  
                 <a href="/applications">Applications</a> 
-                <a href="/bloodA1C">Blood A1C</a> 
+                <a href="/hbA1c">Blood A1C</a> 
                 <a href="/bloodPressure">Blood Pressure</a>   
                 <a href="/cholesterol">Cholesterol</a> 
                 <a href="/demographics">Demographics</a> 
@@ -52,56 +52,35 @@
 
         
         <div class="content">
-        <h1 class="header">Patients Blood Pressure</h1>
+        <h1 class="header">Blood Pressure Testing 2019</h1>
         <table class="data_table" id="patients_table" >
             <tr>
-                <th>TimePeriod</th>
-                <th>NumDom</th>
-                <th>TotalPercent</th>
-                <th>PatientAmountSpecifc</th>
-                <th>PatientAmountTotal</th>
+                <th>PatientAmount</th>
+                <th>LevelOfControl</th>
             </tr>
             <% patients.forEach(function(o) { %>
-                <tr><td><%= o.TimePeriod %></td><td><%= o.NumDom %></td><td><%= o.TotalPercent %></td><td><%= o.PatientAmountSpecifc %></td><td><%= o.PatientAmountTotal %></td></tr>
+                <tr><td><%= o.PatientAmount %></td><td><%= o.LevelOfControl %></td></tr>
             <% }); %>
         </table>
         <div id="canvas_container">
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
-        <div class="new-line">
-            <label>Select Recored Year</label>
-            <select id="time-frame" name="time-frame">
-                <option>All Years</option>
-            </select>
-        </div>
 
         <script src="javascript/array.js" type="text/javascript"></script>
     <script>
         //name of column you want data from
-        const chosenField = "PatientAmountSpecifc"
+        const chosenField = "PatientAmount"
         //giving function table id
         let dataArray = returnArrayFromTable("patients_table");
+        console.log(dataArray);
         //gets array of values
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
         //gets labels
-        let labelArray = makeLabelArray(dataArray, "TimePeriod", false);
+        let labelArray = makeLabelArray(dataArray, "LevelOfControl", false);
         //gets colors array - currently can only create array of one color
-        let colorArray = makeColorArray(dataArray);
+        let colorArray = makeMultipleColorArray(3, false, 1);
         //creates graph
-        let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmountSpecifc", 'bar' )
-        //makes dropdown
-        let years = makeYearArray(dataArray, "TimePeriod");
-        addSelectYears(years);
-
-        //changing the value on the chart based on selection in the dropdown
-        document.getElementById('time-frame').addEventListener('change', function() {
-                let changedDataArray = dataArrayByYear(dataArray, this.value, "TimePeriod");
-                let changedValuesArray = desiredArrayByYear(this.value, dataArray, chosenField);
-                let changedLabelArray = makeLabelArray(changedDataArray, "TimePeriod", false);
-                let changedColorArray = makeColorArray(changedDataArray);
-                globalChart.destroy();
-                globalChart = generateChart(changedLabelArray, changedValuesArray, changedColorArray, "PatientAmountSpecifc", 'bar');
-            });
+        let globalChart = generateChart(labelArray, valuesArray, colorArray, "PatientAmount", 'bar' );
 
     </script>
 </body>

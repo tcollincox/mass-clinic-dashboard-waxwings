@@ -1,7 +1,7 @@
 const sequelize = require('sequelize');
 const db = require('../config/database');
 
-const patients = db.define('cholesterol', {
+const patients = db.define('diabetesBloodPressure', {
 	LevelOfControl:{
 		type: sequelize.STRING
 	},
@@ -10,6 +10,7 @@ const patients = db.define('cholesterol', {
 	},
 }, {
 	freezeTableName: true,
+	timestamps: false
 });
 
 module.exports = patients;
