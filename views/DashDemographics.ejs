@@ -63,9 +63,11 @@
 
 
 
-        <div class="chartSection">
-        <div class="chart"><%- include('Partials/demographics', {demographics:data.demographics})%><a href="/demographics">See More</a></div>
+        <div style="margin-bottom:100px;">
+        <div><%- include('Partials/demographics', {demographics:data.demographics})%></div>
         </div>
-
+        <div style="text-align: center; font-size: large; border: 2px black solid; margin: 10px 40vw;">
+        <a href="/demographics">See More</a>
+        </div>
     </body>
 </html>

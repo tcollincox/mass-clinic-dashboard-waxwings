@@ -29,6 +29,11 @@ table, td, th{
     height: 200px;
     width: 25%;
 }
+.svg_container{
+    margin:10px 0;
+    display: flex;
+    justify-content: center;  
+}
 .data_table{
     visibility: collapse;
 }

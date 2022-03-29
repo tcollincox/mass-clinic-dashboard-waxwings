@@ -28,7 +28,19 @@
         let yearsCARE = makeYearArray(dataArrayCARE, "RecordedYear");
         let valuesArrayCARE = desiredArrayByYear("All Years", dataArrayCARE, chosenFieldCARE);
         let labelArrayCARE = makeLabelArray(dataArrayCARE, "AppttypeGroup", false);
-        let colorArrayCARE = makeMultipleColorArray(2, false, yearsCARE.length);
+        let colorArrayCARE = [];
+        let groupingArrayCARE = makeLabelArray(dataArrayCARE, "AppttypeGroup", false );
+        groupingArrayCARE.forEach(element => {
+            if(element == 'Diagnostic Consult'){
+                colorArrayCARE.push('rgb(66, 179, 229 )');
+            }
+            else if(element == 'Primary Care'){
+                colorArrayCARE.push('rgb(26, 109, 185 )');
+            }
+            else{
+                colorArrayCARE.push('rgb(23, 195, 178 )')
+            }
+        });
         let globalChartCARE = generateChartPartial(labelArrayCARE, valuesArrayCARE, colorArrayCARE, "Number Of Patient Applications", 'bar', "myChartCARE" );
 
         </script>
