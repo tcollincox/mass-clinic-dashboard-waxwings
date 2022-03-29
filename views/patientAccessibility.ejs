@@ -69,6 +69,9 @@
         const chosenField = "PercentAmount"
         let dataArray = returnArrayFromTable("patient_table");
         let valuesArray = desiredArrayByYear("All Years", dataArray, chosenField);
+        valuesArray.forEach((element, index) => {
+            valuesArray[index] = element * 100;
+        });
         let labelArray = makeLabelArray(dataArray, "AmountOfTime", false);
         let colorArray = ['rgb(66, 179, 229 )', 'rgb(45, 187, 204 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(26, 109, 185 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )'];
         let globalChart = generateChartNoLabelsAll(labelArray, valuesArray, colorArray, "How Accessible", 'pie' )

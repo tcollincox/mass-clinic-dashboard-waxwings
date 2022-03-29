@@ -169,6 +169,38 @@ function generateChart(labelArray, dataArray, colorOptions, chartLabel, chartTyp
 }
 
 //given an array of labels, your full data array of JSON objects, an array of color options, a string that is the label of your chart, and a string that is 
+// your desired chart type this goes into the html document and adds a graph to your empty graph area.
+function generateChartNoTopLable(labelArray, dataArray, colorOptions, chartLabel, chartType){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data,
+        options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+    };
+
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    return myChart;
+}
+
+//given an array of labels, your full data array of JSON objects, an array of color options, a string that is the label of your chart, and a string that is 
 // your desired chart type this goes into the html document and adds a graph with no labels to your empty graph area .
 function generateChartNoLabels(labelArray, dataArray, colorOptions, chartLabel, chartType){
     const data = {
@@ -285,6 +317,38 @@ function generateChartGiveId(labelArray, dataArray, colorOptions, chartLabel, ch
     const config = {
         type: chartType,
         data
+    };
+
+    var myChart = new Chart(
+        document.getElementById(chartId),
+        config
+    );
+
+    return myChart;
+}
+
+//given an array of labels, your full data array of JSON objects, an array of color options, a string that is the label of your chart, and a string that is 
+// your desired chart type this goes into the html document and adds a graph to your empty graph area.
+function generateChartGiveIdNoLegend(labelArray, dataArray, colorOptions, chartLabel, chartType, chartId){
+    const data = {
+        labels: labelArray,
+        datasets: [{
+            label: chartLabel,
+            backgroundColor:colorOptions,
+            data: dataArray
+        }]
+    };
+
+    const config = {
+        type: chartType,
+        data,
+        options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+        }
     };
 
     var myChart = new Chart(
