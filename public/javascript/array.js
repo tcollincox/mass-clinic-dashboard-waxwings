@@ -157,7 +157,14 @@ function generateChart(labelArray, dataArray, colorOptions, chartLabel, chartTyp
 
     const config = {
         type: chartType,
-        data
+        data,
+        options: {
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+        }
     };
 
     var myChart = new Chart(
