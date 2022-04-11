@@ -21,12 +21,7 @@ table, td, th{
 }
 #canvas_container{
     margin:0px auto ;
-    height: 200px;
-    width: 25%;
-}
-.canvas_container{
-    margin:0px auto ;
-    height: 200px;
+    height: 50%;
     width: 25%;
 }
 .svg_container{
@@ -39,7 +34,7 @@ table, td, th{
 }
 .new-line{
     display: block;
-    margin: 200px 40%;
+    margin: 5% 40%;
 }
 select{
     width:120px;

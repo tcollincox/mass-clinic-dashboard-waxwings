@@ -52,46 +52,30 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
-            .chartBox{
-                width:300px;
-            }
-            *{
-                margin: 0px;
-                padding: 0px;
-                padding-top: 20px ;
-            }
-            
             h1{
                 text-align: center;
                 margin: 0px auto;
-                width: 50%;
             }
             h3{
                 text-align: center;
             }
             table{
-                border-collapse: collapse;
-            }
-            table, td, th{
-                border: 1px solid black ;
-                text-align: center;
-                padding:5px;
-            }
-            #genderDonutGraph, #ageDonutGraph, #raceDonutGraph {
-            width: 320px;
-            height: 350px;
+               display: none;
             }
             .chartBox{
-                float: left;
+                width:300px;
             }
-            .data_table{
-                visibility: collapse;
+            #aligned{
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
             }
-            .aligned{
-                width:auto;
-                height: 600px;
+            .drop-down{
                 display: flex;
                 justify-content: center;
+            }
+            .drop-down label{
+                margin: 10px;
             }
         </style>
     </head>
@@ -130,7 +114,7 @@
                 <canvas id="raceDonutGraph"></canvas>
             </div>
         </div>
-        <div class="new-line">
+        <div class="drop-down">
             <label>Select Recored Year</label>
             <select id="time-frame" name="time-frame">
             </select>
@@ -178,62 +162,7 @@
                 });
 
 
-            // //race logic
-            
-
-            // function arrayTable(table_id){
-            //     let table = document.getElementById(table_id).rows;
-            //     for(let i = 1; i < table.length; i++ ){
-            //         demographicTypeArray.push(table[i].cells[0].childNodes[0].nodeValue);
-            //         demogrpahicPatientAmountArray.push(table[i].cells[1].childNodes[0].nodeValue);
-            //         demographicRecordedYear.push(table[i].cells[2].childNodes[0].nodeValue);
-            //     }//end for
-            // }//end function
-            // arrayTable("demographics_table");
-            
-            
-            // //Third Donut Graph data, config and render
-            // //data for age
-            // const dataRace = {
-            //     labels: [demographicTypeArray[12], demographicTypeArray[15], demographicTypeArray[18], demographicTypeArray[21], demographicTypeArray[24], demographicTypeArray[27]],
-            //     //['African-American', "Hispanic/Latino", "Multi-Racial", "White", "Other", "Undeclared"],
-            //     datasets: [
-            //         {
-            //             label: 'Race of Patient',
-            //             data: [demogrpahicPatientAmountArray[12], demogrpahicPatientAmountArray[15], demogrpahicPatientAmountArray[18], demogrpahicPatientAmountArray[21], demogrpahicPatientAmountArray[24], demogrpahicPatientAmountArray[27]],
-            //             //[565, 399, 142, 732, 4, 0],
-            //             backgroundColor: [
-            //             'rgb(45, 187, 204 )', 'rgb(23, 195, 178 )', 'rgb(13, 164, 192 )', 'rgb(3, 132, 206 )', 'rgb(26, 109, 185 )', 'rgb(49, 86, 163 )', 'rgb(11, 49, 66 )',
-            //             ],
-            //             borderColor: [
-            //                 'rgba(0, 0, 0, 1)',
-            //                 'rgba(0, 0, 0, 1)',
-            //                 'rgba(0, 0, 0, 1)',
-            //                 'rgba(0, 0, 0, 1)',
-            //                 'rgba(0, 0, 0, 1)',
-            //                 'rgba(0, 0, 0, 1)',
-            //             ],
-            //             borderWidth: 2,
-            //         }]
-            // };
-            // //config for third donut graph
-            // const configRace = {
-            //     type: 'doughnut',
-            //     data: dataRace,
-            //     options: {
-            //         cutoutPercentage: 80,
-            //         animation: {
-            //             animateScale: true,
-            //         }
-            //     }   
-            // };
-            // //render third graph
-            // const raceDonutGraph = new Chart(
-            //     document.getElementById('raceDonutGraph'),
-            //     configRace
-            // );
-
-            //race logic
+           
             let raceArray = [];
             dataArray.forEach(element => {
                 if(element['Demographic Type'] == 'African American' || element['Demographic Type'] == 'Hispanic / Latino' || element['Demographic Type'] == 'Multi-Racial' || element['Demographic Type'] == 'White' || element['Demographic Type'] == 'Other'){

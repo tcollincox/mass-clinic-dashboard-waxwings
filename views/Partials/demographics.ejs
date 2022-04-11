@@ -10,6 +10,31 @@
         
     </head>
     <body>
+        <style>
+            h1{
+                margin-bottom: 50px;
+            }
+            #aligned{
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .chartBox{
+                height: 300px;
+                width: 400px;
+                text-align: center;
+                box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2) ;
+            }
+            .chartBox h3{
+                margin-bottom: 30px;
+            }
+            .inner{
+                margin: auto;
+                height:200px;
+                width: 200px;
+            }
+        </style>
+
         <h1 class="header">Demographics from MASS Clinic</h1>
         
 
@@ -29,30 +54,18 @@
             <% }); %>
 
         </table>
-        <style>
-            #aligned{
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-            .chartBox{
-                height: 400px;
-                width: 400px;
-                text-align: center;
-            }
-        </style>
-
+        
         <div id="aligned">
             <!--first donut graph for gender-->
             <div class="chartBox">
                 <h3>Gender</h3>
-                <canvas id="genderDonutGraph" width="200" height="200"></canvas>
+                <div class="inner"><canvas id="genderDonutGraph"></canvas></div>
             </div>
 
             <!--third donut graph for race-->
             <div class="chartBox">
                 <h3>Race</h3>
-                <canvas id="raceDonutGraph" width="200" height="200"></canvas>
+                <div class="inner"><canvas id="raceDonutGraph"></canvas></div>
             </div>
         </div>
         
